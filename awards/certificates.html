@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"
+    />
+    <title>Awards and Certificates</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <center>Awards and Certificates - Courses</center>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <table
+        id="example"
+        class="table table-striped table-bordered"
+        cellspacing="0"
+        width="100%"
+      >
+        <thead>
+          <tr>
+            <td>Category</td>
+            <td>Name</td>
+            <td>View Certificate</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Course</td>
+            <td>Coursera - TensorFlow Specialization</td>
+            <td>
+              https://gist.github.com/maharshisolanki/8d19ac715e725e31ac279e402d1fd6ea
+            </td>
+          </tr>
+          <tr>
+          <td>Course</td>
+            <td>Coursera - Intro to TensorFlow in ML, DL & AI</td>
+            <td>
+              https://gist.github.com/maharshisolanki/065b9fe043a3558d182d5df25df8c2f4&sa=D&ust=1590428390737000
+            </td>
+          </tr>
+          <tr>
+          <td>Course</td>
+            <td>Coursera - TensorFlow CNN</td>
+            <td>
+              https://gist.github.com/maharshisolanki/4435bb01f54ad8f2a3ce89420d36ca8f
+            </td>
+          </tr>
+          <tr>
+          <td>Course</td>
+            <td>Coursera - TensorFlow NLP</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+          <td>Course</td>
+            <td>Coursera - TensorFlow Time Series & Prediction</td>
+            <td>
+              https://gist.github.com/maharshisolanki/ab2ecfa136bd835c8c2d2d0aed14219d            </td>
+          </tr>
+           <td>Webinar</td>
+            <td>ED Apply - Intro to ML</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+           </tr>
+           <td>Webinar</td>
+            <td>ED Apply - Image Classifier</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+          </tr>
+           <td>Course</td>
+            <td>NITI Aayog - Android Development</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+          </tr>
+           <td>Course</td>
+            <td>NITI Aayog - Robotic Process Automation</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+           <td>Course</td>
+            <td>Zero2Maker - Web Development Course</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.12.4.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"
+    ></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("tr").each(function () {
+          $(this)
+            .find("td")
+            .each(function () {
+              var t = $(this)
+                .text()
+                .replace(/\s+|\t/g, "");
+              if (t.includes("https://www.google.co.in/search?q=")) {
+                $(this).html(
+                  "<a href='" +
+                    t +
+                    "' class='btn btn-primary' target='_blank'>Search Now</a>"
+                );
+              } else if (t.includes("https://gist.github.com/")) {
+                $(this).html(
+                  "<a href='" +
+                    t +
+                    "' class='btn btn-success' target='_blank'>Open</a>"
+                );
+              }
+            });
+        });
+        $("#example").DataTable();
+      });
+    </script>
+
+
+    <br />
+
+
+
+     <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <center>Awards and Certificates - Competitions</center>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <table
+        id="example"
+        class="table table-striped table-bordered"
+        cellspacing="0"
+        width="100%"
+      >
+        <thead>
+          <tr>
+            <td>Category</td>
+            <td>Name</td>
+            <td>View Certificate</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Competition</td>
+            <td>Ideate For India - Tech Creations Champions</td>
+            <td>
+              https://gist.github.com/maharshisolanki/8d19ac715e725e31ac279e402d1fd6ea
+            </td>
+          </tr>
+          <tr>
+          <td>Competition</td>
+            <td>Eureka! Junior</td>
+            <td>
+              https://gist.github.com/maharshisolanki/065b9fe043a3558d182d5df25df8c2f4&sa=D&ust=1590428390737000
+            </td>
+          </tr>
+          <tr>
+          <td>Competition</td>
+            <td>IRIS National Fair</td>
+            <td>
+              https://gist.github.com/maharshisolanki/4435bb01f54ad8f2a3ce89420d36ca8f
+            </td>
+          </tr>
+          <tr>
+          <td>Competition</td>
+            <td>Macmillan Budding Scientist Award</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+          <tr>
+          <td>Competition</td>
+            <td>Telangana State Innovation Cell</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+         <tr>
+          <td>Competition</td>
+            <td>Macmillan Budding Scientist Award</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+
+                  <tr>
+          <td>Competition</td>
+            <td>Maker Faire 2019</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+
+                    <tr>
+          <td>Competition</td>
+            <td>Humming Bird CS Olympiad</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+
+                    <tr>
+          <td>Competition</td>
+            <td>ISRO Quiz 2019</td>
+            <td>
+              https://gist.github.com/maharshisolanki/61232e9d4d3d3199e2f14600379abe58
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.12.4.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"
+    ></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("tr").each(function () {
+          $(this)
+            .find("td")
+            .each(function () {
+              var t = $(this)
+                .text()
+                .replace(/\s+|\t/g, "");
+              if (t.includes("https://www.google.co.in/search?q=")) {
+                $(this).html(
+                  "<a href='" +
+                    t +
+                    "' class='btn btn-primary' target='_blank'>Search Now</a>"
+                );
+              } else if (t.includes("https://gist.github.com/")) {
+                $(this).html(
+                  "<a href='" +
+                    t +
+                    "' class='btn btn-success' target='_blank'>Open</a>"
+                );
+              }
+            });
+        });
+        $("#example").DataTable();
+      });
+    </script>
+
+
+    <br />
+  </body>
+</html>
