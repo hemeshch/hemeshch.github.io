@@ -1,6 +1,0 @@
-User-agent: *
-Disallow:/assets/
-Disallow:alpha/images/
-Disallow:alpha/assets/
-Disallow:/img/
-Disallow:/files/
