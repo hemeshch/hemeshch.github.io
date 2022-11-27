@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap');
 
-body,
-button {
-	font-family: 'Poppins', sans-serif;
+* {
+	font-family: 'Epilogue', sans-serif !important;
 }
 
 #normal-font {
@@ -154,9 +153,7 @@ button {
 }
 
 .card-profile:hover {
-	box-shadow: 0 3.4px 6.5px rgba(0, 0, 0, 0.009), 0 8.7px 16.5px rgba(0, 0, 0, 0.013),
-		0 17.7px 33.7px rgba(0, 0, 0, 0.017), 0 36.5px 69.4px rgba(0, 0, 0, 0.021),
-		0 100px 190px rgba(0, 0, 0, 0.03);
+	box-shadow: 0 3.4px 6.5px rgba(0, 0, 0, 0.009), 0 8.7px 16.5px rgba(0, 0, 0, 0.013), 0 17.7px 33.7px rgba(0, 0, 0, 0.017), 0 36.5px 69.4px rgba(0, 0, 0, 0.021), 0 100px 190px rgba(0, 0, 0, 0.03);
 }
 
 .price-profile {
