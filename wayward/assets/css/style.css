@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+
+.navbar-brand {
+	font-family: 'Aclonica', sans-serif;
+}
+
+#hero-with-vid {
+	zoom: 0.8;
+}
