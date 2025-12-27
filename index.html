@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,10 @@
     <meta property="twitter:image" content="https://hemesh.tech/pitch.jpeg">
 
 
-    <link href="https://fonts.cdnfonts.com/css/apple-garamond" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Young+Serif&display=swap"
+        rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -39,8 +42,8 @@
         }
 
         body {
-            font-family: 'Apple Garamond', 'Garamond', serif;
-            max-width: 800px;
+            font-family: 'Figtree', sans-serif;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
             line-height: 1.6;
@@ -61,19 +64,35 @@
             font-weight: normal;
         }
 
-        nav {
+        .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 10px;
+            align-items: center;
         }
 
-        nav a {
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f6f6f6;
+            padding: 8px;
+            border-radius: 4px;
+            color: #222;
+            transition: all 0.2s ease;
             text-decoration: none;
-            color: #333;
-            transition: color 0.2s;
+            border: 1px solid #eee;
         }
 
-        nav a:hover {
-            color: #777;
+        .nav-links a:hover {
+            background: #eee;
+            transform: translateY(-2px);
+            border-color: #ddd;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Young Serif', serif;
         }
 
         h1 {
@@ -87,6 +106,7 @@
             font-weight: normal;
             margin-top: 30px;
             margin-bottom: 15px;
+            scroll-margin-top: 40px;
         }
 
         p {
@@ -306,21 +326,34 @@
         }
 
         .hero-link {
-            background: #f6f6f6;
-            padding: 8px 15px;
+            padding: 10px 18px;
             border-radius: 4px;
             text-decoration: none;
-            color: #222;
             transition: all 0.2s ease;
             font-size: 1rem;
-            letter-spacing: 0.02em;
-            border: 1px solid #eee;
         }
 
-        .hero-link:hover {
-            background: #eee;
+        .hero-link.primary {
+            background: #222;
+            color: #fff;
+            border: 1px solid #222;
+        }
+
+        .hero-link.primary:hover {
+            background: #000;
             transform: translateY(-2px);
-            border-color: #ddd;
+        }
+
+        .hero-link.secondary {
+            background: transparent;
+            color: #222;
+            border: 1px solid #ddd;
+        }
+
+        .hero-link.secondary:hover {
+            background: #f6f6f6;
+            transform: translateY(-2px);
+            border-color: #ccc;
         }
 
         .hero-section {
@@ -391,82 +424,536 @@
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
-        .profile-photo {
-            float: left;
-            margin: 0 30px 20px 0;
-        }
-
-        .polaroid {
-            background: white;
-            padding: 8px 8px 16px 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 140px;
-            transform: rotate(-2deg);
-            transition: all 0.3s ease;
+        /* Scrolling Photo Gallery */
+        .photo-scroll-container {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            overflow: hidden;
+            margin-bottom: 30px;
             position: relative;
+            padding: 20px 0;
         }
 
-        .polaroid:hover {
-            transform: scale(1.05) rotate(0deg);
-            z-index: 2;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .polaroid img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .polaroid-pin {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #f0f0f0;
+        .photo-scroll-container::before,
+        .photo-scroll-container::after {
+            content: '';
             position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .photo-scroll-container::before {
+            left: 0;
+            background: linear-gradient(to right, #fff, transparent);
+        }
+
+        .photo-scroll-container::after {
+            right: 0;
+            background: linear-gradient(to left, #fff, transparent);
+        }
+
+        .photo-scroll-track {
+            display: flex;
+            gap: 16px;
+            animation: scrollPhotos 180s linear infinite;
+            width: max-content;
+        }
+
+        .photo-scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        .scroll-photo {
+            flex-shrink: 0;
+            height: 160px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            transform: rotate(var(--rotation, 0deg));
+            object-fit: cover;
+        }
+
+        .scroll-photo:nth-child(odd) {
+            --rotation: -1.5deg;
+        }
+
+        .scroll-photo:nth-child(even) {
+            --rotation: 1.5deg;
+        }
+
+        .scroll-photo:nth-child(3n) {
+            --rotation: 2deg;
+        }
+
+        .scroll-photo:hover {
+            transform: scale(1.08) rotate(0deg);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        @keyframes scrollPhotos {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .hero-section {
             clear: both;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: #ddd;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+
+        .project-content {
+            padding: 16px;
+        }
+
+        .project-title {
+            font-family: 'Figtree', serif;
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .project-subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-categories {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .project-category {
+            background: #f0f0f0;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        .project-date {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .last-name {
+                display: none;
+            }
+        }
+
+        .project-card.hidden-project {
+            display: none;
+        }
+
+        .project-card.hidden-project.show {
+            display: block;
+        }
+
+        .show-more-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 24px auto 0;
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px dashed #ccc;
+            border-radius: 20px;
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.95rem;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .show-more-btn::after {
+            content: '>';
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .show-more-btn:hover {
+            border-style: solid;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .show-more-btn:hover::after {
+            transform: translateX(3px);
+        }
+
+        .show-more-btn.expanded::after {
+            content: '<';
+        }
+
+        .show-more-btn.expanded:hover::after {
+            transform: translateX(-3px);
+        }
+
+        /* Email Popup */
+        .email-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .email-popup-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .email-popup {
+            background: white;
+            padding: 32px 36px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            text-align: left;
+            transform: scale(0.95) translateY(10px);
+            transition: all 0.25s ease;
+            max-width: 90%;
+            min-width: 300px;
+        }
+
+        .email-popup-overlay.active .email-popup {
+            transform: scale(1) translateY(0);
+        }
+
+        .email-popup h3 {
+            font-family: 'Young Serif', serif;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+            font-weight: normal;
+        }
+
+        .email-popup .popup-subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .email-popup .email-address {
+            font-size: 1.1rem;
+            color: #333;
+            background: #f6f6f6;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .email-popup .email-address:hover {
+            background: #eee;
+        }
+
+        .email-popup .copy-hint {
+            font-size: 0.8rem;
+            color: #999;
+            margin-left: 12px;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h3 class="site-title">Hemesh Chadalavada</h3>
+        <h3 class="site-title">Hemesh <span class="last-name">Chadalavada</span></h3>
+        <nav class="nav-links">
+            <a href="https://www.linkedin.com/in/hemeshch/" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+            </a>
+            <a href="#" onclick="openEmailPopup(); return false;" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+            </a>
+            <a href="https://github.com/hemeshch" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+            </a>
+        </nav>
     </header>
 
     <main>
 
-        <div class="profile-photo">
-            <div class="polaroid">
-                <div class="polaroid-pin"></div>
-                <img src="cute/tw-pfp-5.png" alt="Hemesh Photo">
+        <div class="photo-scroll-container">
+            <div class="photo-scroll-track">
+
+                <img src="cute/IMG_6481.jpg" alt="Photo" class="scroll-photo">
+                <img src="cute/PHOTO-2025-12-06-20-22-06.jpg" alt="Photo" class="scroll-photo">
+                <img src="cute/tw-pfp-5.png" alt="Photo" class="scroll-photo">
+                <img src="cute/IMG_0989.jpg" alt="Photo" class="scroll-photo">
+                <img src="cute/IMG_0071.JPG" alt="Photo" class="scroll-photo">
+                <img src="cute/riceapps-vid.jpeg" alt="Photo" class="scroll-photo">
+                <img src="cute/DSC00437.JPG" alt="Photo" class="scroll-photo">
+                <img src="cute/pitch.jpeg" alt="Photo" class="scroll-photo">
+                <img src="cute/DSC02422.JPG" alt="Photo" class="scroll-photo">
+                <img src="cute/quad.png" alt="Photo" class="scroll-photo">
+                <img src="cute/IMG_0987.JPG" alt="Photo" class="scroll-photo">
+                <img src="cute/IMG_4940.jpg" alt="Photo" class="scroll-photo">
+
+                <img src="cute/IMG_6481.jpg" alt="Photo" class="scroll-photo">
+                <img src="cute/PHOTO-2025-12-06-20-22-06.jpg" alt="Photo" class="scroll-photo">
+                <img src="cute/tw-pfp-5.png" alt="Photo" class="scroll-photo">
+                <img src="cute/IMG_0989.jpg" alt="Photo" class="scroll-photo">
+                <img src="cute/IMG_0071.JPG" alt="Photo" class="scroll-photo">
+                <img src="cute/riceapps-vid.jpeg" alt="Photo" class="scroll-photo">
+                <img src="cute/DSC00437.JPG" alt="Photo" class="scroll-photo">
+                <img src="cute/pitch.jpeg" alt="Photo" class="scroll-photo">
+                <img src="cute/DSC02422.JPG" alt="Photo" class="scroll-photo">
+                <img src="cute/quad.png" alt="Photo" class="scroll-photo">
+                <img src="cute/IMG_0987.JPG" alt="Photo" class="scroll-photo">
+                <img src="cute/IMG_4940.jpg" alt="Photo" class="scroll-photo">
+
             </div>
         </div>
 
         <div class="hero-section">
-            <h1>Hey, I'm Hemesh.</h1>
-            <p>Builder. Engineer. Filmmaker. CS + ELEC @ Rice.</p>
+            <h1>hey, i'm hemesh!</h1>
+            <p>builder. engineer. filmmaker. computer engineering @ rice university.</p>
 
             <div class="hero-links">
-                <a href="https://drive.google.com/file/d/141OxllZew1uESaCQrgaEb6rNdxTlbFsh/view?usp=sharing"
-                    target="_blank" class="hero-link">résumé</a>
-                <a href="https://www.linkedin.com/in/hemeshch/" target="_blank" class="hero-link">linkedin</a>
-                <a href="https://x.com/hemeshch" target="_blank" class="hero-link">x</a>
-                <a href="https://github.com/hemeshch" target="_blank" class="hero-link">github</a>
-
+                <a href="#builds" class="hero-link primary">see builds</a>
+                <a href="#" onclick="openEmailPopup(); return false;" class="hero-link secondary">contact me</a>
             </div>
         </div>
 
-        <h2>Currently:</h2>
-        <p>Building and thinking about experiences and attention in a post-AGI world.</p>
+
+        <h2 id="builds">builds</h2>
+
+        <div class="projects-grid">
+            <a href="/builds/alpha-monitor.html" class="project-card">
+                <img src="/build-img/pitch.jpeg" alt="Alpha Monitor" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">alpha monitor</h3>
+                    <p class="project-subtitle">spent 6 years building a wearable device for my grandma with alzheimer's
+                    </p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">hardware</span>
+                            <span class="project-category">IoT</span>
+                        </div>
+                        <span class="project-date">2017 - 2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/builds/agent-evan.html" class="project-card">
+                <img src="/build-img/agent-evan-cover.png" alt="agent evan" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">agent evan</h3>
+                    <p class="project-subtitle">is this AGI? the ultimate desktop agent that takes action - do anything,
+                        from anywhere.</p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">hackrice winner</span>
+                        </div>
+                        <span class="project-date">sept. 2025</span>
+                    </div>
+                </div>
+            </a>
+
+
+            <a href="/builds/summer-ai.html" class="project-card">
+                <img src="/build-img/summer-cover.png" alt="Summer AI" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">summer ai</h3>
+                    <p class="project-subtitle">a proactive ai agent on iMessage with 135+ tools that knows you better
+                        than you do.</p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">hackrice winner</span>
+                        </div>
+                        <span class="project-date">2024</span>
+                    </div>
+                </div>
+            </a>
+            <!-- 
+            <a href="#" class="project-card">
+                <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/764/784/datas/medium.png"
+                    alt="Agent Evan" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">hootplanner</h3>
+                    <p class="project-subtitle">a planner for hootsuite</p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">AI</span>
+                            <span class="project-category">Desktop</span>
+                        </div>
+                        <span class="project-date">2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="project-card">
+                <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/764/784/datas/medium.png"
+                    alt="Agent Evan" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">riceapps</h3>
+                    <p class="project-subtitle">a collection of apps for rice students</p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">AI</span>
+                            <span class="project-category">Desktop</span>
+                        </div>
+                        <span class="project-date">2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="project-card">
+                <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/764/784/datas/medium.png"
+                    alt="Agent Evan" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">universis</h3>
+                    <p class="project-subtitle">universis is a platform for students to find and apply to internships
+                    </p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">AI</span>
+                            <span class="project-category">Desktop</span>
+                        </div>
+                        <span class="project-date">2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="project-card hidden-project">
+                <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/764/784/datas/medium.png"
+                    alt="Agent Evan" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">craftroom</h3>
+                    <p class="project-subtitle">universis is a platform for students to find and apply to internships
+                    </p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">AI</span>
+                            <span class="project-category">Desktop</span>
+                        </div>
+                        <span class="project-date">2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="project-card hidden-project">
+                <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/764/784/datas/medium.png"
+                    alt="Agent Evan" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">lockin browser</h3>
+                    <p class="project-subtitle">universis is a platform for students to find and apply to internships
+                    </p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">AI</span>
+                            <span class="project-category">Desktop</span>
+                        </div>
+                        <span class="project-date">2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="project-card hidden-project">
+                <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/764/784/datas/medium.png"
+                    alt="Agent Evan" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">sessionfix</h3>
+                    <p class="project-subtitle">universis is a platform for students to find and apply to internships
+                    </p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">AI</span>
+                            <span class="project-category">Desktop</span>
+                        </div>
+                        <span class="project-date">2024</span>
+                    </div>
+                </div>
+            </a> -->
+
+        </div>
+
+        <!-- <button class="show-more-btn" id="showMoreBtn" onclick="toggleProjects()">psst... more stuff </button> -->
+
 
         <h2>In The Past:</h2>
         <ul>
@@ -527,30 +1014,30 @@
             </li>
             <li>Cartoon
                 Network's #RedrawingIndia ambassador. <span class="squiggly"
-                    data-tooltip="In high school, my English teacher recognized me and blew my cover as the 'Cartoon Network kid' on day one. Ended up getting bullied for the rest of the year.">Funny
-                    story.</span></li>
+                    data-tooltip="In high school, my English teacher recognized me and blew my cover as THE 'Cartoon Network kid' on day one. Ended up getting bullied for the rest of the year.">Lore.</span>
+            </li>
         </ul>
 
 
         <div class="combined-section">
             <div>
                 <h2>Let's hang out:</h2>
-                <p>Reach out on my socials, or shoot me an email at <a
-                        href="mailto:hemesh@rice.edu">hemesh@rice.edu</a>.
+                <p>Reach out on my socials, or shoot me an email at <a href="#"
+                        onclick="openEmailPopup(); return false;">hemesh@rice.edu</a>.
                 </p>
             </div>
 
             <div>
                 <h2>Things in my mind:</h2>
                 <div class="tag-container">
-                    <span class="tag">high agency</span>
-                    <span class="tag">attention</span>
-                    <span class="tag">storytelling</span>
+                    <span class="tag">attention and memory</span>
+                    <span class="tag">fourier transforms</span>
                     <span class="tag">arduinos</span>
                     <span class="tag">biryani</span>
                     <span class="tag">films</span>
                     <span class="tag">hard sci-fi books</span>
                     <span class="tag">aperture</span>
+                    <span class="tag">SIGMA 18-50/2,8</span>
                 </div>
             </div>
         </div>
@@ -578,39 +1065,61 @@
             <a href="/oldsite.html" target="_blank">old site (do not click)</a>
         </div>
 
-        <!-- <div class="art-gallery">
-            <div class="art-grid">
-                <div class="art-piece"><img src="art/inglourious-basterds-0.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/DKR1.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/La-La-Land.avif" alt="Art"></div>
-                <div class="art-piece"><img src="art/prabhas-8k-4k-baahubali-2-the-conclusion-wallpaper-preview.jpg"
-                        alt="Art"></div>
-                <div class="art-piece"><img src="art/interstellar_voyage-wide.jpg" alt="Art"></div>
-                <div class="art-piece"><img src="art/incigEAw6Dekpk7BeFzb3BYcmCY.jpg" alt="Art"></div>
-                <div class="art-piece"><img src="art/project-hail-mary-770x433.jpg" alt="Art"></div>
-                <div class="art-piece"><img src="art/230904_r42883.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/wp14471204.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/wp5585586.jpg" alt="Art"></div>
-                <div class="art-piece"><img src="art/wp5585702.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/GoXIcV5XcAAk8XW.png" alt="Art"></div>
-
-                <div class="art-piece"><img src="art/inglourious-basterds-0.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/DKR1.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/La-La-Land.avif" alt="Art"></div>
-                <div class="art-piece"><img src="art/prabhas-8k-4k-baahubali-2-the-conclusion-wallpaper-preview.jpg"
-                        alt="Art"></div>
-                <div class="art-piece"><img src="art/interstellar_voyage-wide.jpg" alt="Art"></div>
-                <div class="art-piece"><img src="art/incigEAw6Dekpk7BeFzb3BYcmCY.jpg" alt="Art"></div>
-                <div class="art-piece"><img src="art/project-hail-mary-770x433.jpg" alt="Art"></div>
-                <div class="art-piece"><img src="art/230904_r42883.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/wp14471204.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/wp5585586.jpg" alt="Art"></div>
-                <div class="art-piece"><img src="art/wp5585702.webp" alt="Art"></div>
-                <div class="art-piece"><img src="art/GoXIcV5XcAAk8XW.png" alt="Art"></div>
-            </div>
-        </div> -->
 
     </main>
+
+    <!-- Email Popup -->
+    <div class="email-popup-overlay" id="emailPopup" onclick="closeEmailPopup(event)">
+        <div class="email-popup" onclick="event.stopPropagation()">
+            <h3>let's chat!</h3>
+            <p class="popup-subtitle">i'd love to hear from you. drop me a line anytime.</p>
+            <div class="email-address" onclick="copyEmail()">
+                <span>hemesh@rice.edu</span>
+                <span class="copy-hint" id="copyHint">copy</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openEmailPopup() {
+            const popup = document.getElementById('emailPopup');
+            popup.style.display = 'flex';
+            setTimeout(() => popup.classList.add('active'), 10);
+        }
+
+        function closeEmailPopup(event) {
+            const popup = document.getElementById('emailPopup');
+            popup.classList.remove('active');
+            setTimeout(() => {
+                popup.style.display = 'none';
+                document.getElementById('copyHint').textContent = 'copy';
+            }, 200);
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('hemesh@rice.edu').then(() => {
+                const hint = document.getElementById('copyHint');
+                hint.textContent = 'copied!';
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeEmailPopup();
+        });
+
+        function toggleProjects() {
+            const hiddenProjects = document.querySelectorAll('.hidden-project');
+            const btn = document.getElementById('showMoreBtn');
+            const isShowing = hiddenProjects[0].classList.contains('show');
+
+            hiddenProjects.forEach(project => {
+                project.classList.toggle('show');
+            });
+
+            btn.classList.toggle('expanded');
+            btn.childNodes[0].textContent = isShowing ? 'psst... more stuff ' : 'okay, hide them ';
+        }
+    </script>
 </body>
 
 </html>

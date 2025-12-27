@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Evan - Hemesh Chadalavada</title>
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+
+    <meta name="title" content="Agent Evan - Hemesh Chadalavada">
+    <meta name="description"
+        content="Is this AGI? The ultimate desktop agent that takes action - do anything, from anywhere.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Young+Serif&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header/Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .site-title {
+            font-family: 'Young Serif', serif;
+            font-size: 1.5rem;
+            font-weight: normal;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .site-title:hover {
+            color: #000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f6f6f6;
+            padding: 8px;
+            border-radius: 4px;
+            color: #222;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: 1px solid #eee;
+        }
+
+        .nav-links a:hover {
+            background: #eee;
+            transform: translateY(-2px);
+            border-color: #ddd;
+        }
+
+        @media (max-width: 600px) {
+            .last-name {
+                display: none;
+            }
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #333;
+        }
+
+        .back-link::before {
+            content: '<';
+            font-size: 0.85rem;
+        }
+
+        /* Project Header */
+        .project-header {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-title {
+            font-family: 'Young Serif', serif;
+            font-size: 3rem;
+            font-weight: normal;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .project-tagline {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .project-date {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            background: #f6f6f6;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #555;
+            border: 1px solid #eee;
+        }
+
+        .tldr {
+            background: #fafafa;
+            border: 1px dashed #ddd;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 20px;
+        }
+
+        .tldr-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 6px;
+        }
+
+        .tldr-text {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Hero Image */
+        .hero-image {
+            max-width: 700px;
+            max-height: 500px;
+            height: auto;
+            border-radius: 12px;
+            margin: 0 auto 40px auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            display: block;
+        }
+
+        /* Content Styles */
+        .content h2 {
+            font-family: 'Young Serif', serif;
+            font-size: 1.8rem;
+            font-weight: normal;
+            margin-top: 50px;
+            margin-bottom: 16px;
+            color: #222;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content h3 {
+            font-family: 'Figtree', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 35px;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .content ul,
+        .content ol {
+            margin-bottom: 20px;
+            padding-left: 24px;
+        }
+
+        .content li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .content a {
+            color: #333;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .content a:hover {
+            color: #000;
+        }
+
+        /* Images in content */
+        .content img {
+            max-width: 700px;
+            max-height: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin: 30px auto;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            display: block;
+        }
+
+        .image-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px auto;
+            max-width: 700px;
+        }
+
+        .image-row img {
+            flex: 1;
+            max-width: calc(50% - 10px);
+            max-height: 450px;
+            height: auto;
+            margin: 0;
+            object-fit: contain;
+        }
+
+        .content .image-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* YouTube Embed */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            padding-bottom: min(56.25%, 394px);
+            margin: 30px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-label {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: -20px;
+            margin-bottom: 30px;
+        }
+
+        /* Callout/Highlight Box */
+        .callout {
+            background: #fafafa;
+            border-left: 3px solid #ddd;
+            padding: 20px 24px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout p {
+            margin-bottom: 0;
+            color: #555;
+        }
+
+        /* Quote */
+        blockquote {
+            font-family: 'Young Serif', serif;
+            font-size: 1.4rem;
+            color: #555;
+            border-left: 3px solid #ccc;
+            padding-left: 24px;
+            margin: 35px 0;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* Code Block */
+        code {
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        /* Divider */
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 50px 0;
+        }
+
+        /* Emphasis text - Notion-style callout */
+        .emphasis {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #333;
+            line-height: 1.6;
+            background: #f7f7f7;
+            padding: 16px 20px;
+            border-radius: 6px;
+            display: block;
+        }
+
+        /* Links Section */
+        .project-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .project-link.primary {
+            background: #222;
+            color: #fff;
+        }
+
+        .project-link.primary:hover {
+            background: #444;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .project-link.secondary {
+            background: transparent;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .project-link.secondary:hover {
+            background: #f6f6f6;
+            transform: translateY(-2px);
+        }
+
+        /* Team */
+        .team {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        .project-footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .project-footer p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .project-footer a {
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .project-title {
+                font-size: 2.2rem;
+            }
+
+            .project-tagline {
+                font-size: 1.1rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/" class="site-title">Hemesh <span class="last-name">Chadalavada</span></a>
+        <nav class="nav-links">
+            <a href="https://www.linkedin.com/in/hemeshch/" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+            </a>
+            <a href="mailto:hemesh@rice.edu" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+            </a>
+            <a href="https://github.com/hemeshch" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+            </a>
+        </nav>
+    </header>
+
+    <a href="/#builds" class="back-link">back to all builds</a>
+
+    <article>
+        <div class="project-header">
+            <h1 class="project-title">Agent Evan</h1>
+            <p class="project-tagline">Is this AGI? The ultimate desktop agent that takes action. Do anything, from
+                anywhere.</p>
+
+            <div class="project-meta">
+                <span class="project-date">September 2025</span>
+                <div class="project-tags">
+                    <span class="project-tag">HackRice Winner</span>
+                    <span class="project-tag">AI</span>
+                    <span class="project-tag">Agents</span>
+                </div>
+            </div>
+
+            <div class="tldr">
+                <p class="tldr-label">TL;DR</p>
+                <p class="tldr-text">Led a 4-person team to build a full-stack AI agent with 130+ tools, native iOS app,
+                    and real-time cloud sync in 36 hours. Won the HackRice 2025 AI Track.</p>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/cf4MfKIo0M0" title="Agent Evan Demo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <hr>
+
+            <h2>the obsession</h2>
+
+            <p>Michel and I live on the edge of what's possible with AI. We stay up until 3 AM reading new papers the
+                night they drop. When DeepSeek dropped DeepSeek-OCR, we spent an entire weekend tearing it apart layer
+                by layer, trying to understand exactly how they pulled it off. When Claude gets an update, we're
+                stress-testing it within hours.</p>
+
+            <p>So when we walked into HackRice, we were thinking about agents. Real agents. The kind that actually do
+                things.</p>
+
+            <img src="/build-img/michel-monitor.jpg" alt="Michel with his monitor setup">
+            <p class="image-caption">The initial spark for Agent Evan</p>
+
+            <hr>
+
+            <h2>the problem</h2>
+
+            <p>Every AI tool right now is a conversation. You ask it something, it responds with text. Maybe it writes
+                you some code. Maybe it gives you instructions. But at the end of the day, you're still the one who has
+                to do everything.</p>
+
+            <p>Copy the code into your terminal. Navigate to the right folder. Run the commands. Export the file. Send
+                the email. You're the hands. The AI is just the mouth.</p>
+
+            <p class="emphasis">We wanted to flip that completely.</p>
+
+            <hr>
+
+            <h2>the solution</h2>
+
+            <p>Evan just does things.</p>
+
+            <img src="/build-img/agent-evan-solution.png" alt="Jupyter Notebooks running remotely">
+            <p class="image-caption">Evan running Jupyter Notebooks remotely</p>
+
+            <p>Tell Evan to find every PDF in your Downloads folder from the last month, merge them, and save it to your
+                Desktop. Done. You watch it happen.</p>
+
+            <p>Tell Evan to scrape that website, clean the data, throw it into a spreadsheet, and generate a chart.
+                Done. The file appears.</p>
+
+            <p>Tell Evan to create a presentation about your research with proper formatting and export it as a PDF.
+                Done. No touching PowerPoint.</p>
+
+            <p>Tell Evan to start a training job, monitor the logs, and let you know when accuracy hits 90%. Done. You
+                go do something else.</p>
+
+            <p>This works because Evan has access to everything on your computer. Your file system. Your terminal. Your
+                applications. Your browser. It can run code, process images, generate documents, control apps, monitor
+                processes. Anything you can do sitting at your desk, Evan can do too.</p>
+
+            <p>And you don't need to be at your desk. Evan takes commands from your phone. You could be on the bus, at
+                lunch, in another country. You type what you want, your computer executes.</p>
+
+            <p class="emphasis">The difference between Evan and every other AI tool is simple. ChatGPT tells you how to
+                do things. Evan does them.</p>
+
+            <div class="image-row">
+                <img src="/build-img/evan-tools.png" alt="Evan tools">
+                <img src="/build-img/evan-documents.png" alt="Evan documents">
+            </div>
+            <p class="image-caption">Agent Evan using tools and creating documents</p>
+
+            <hr>
+
+            <h2>the 36 hours</h2>
+
+            <img src="/build-img/evan-flowchart.png" alt="How Agent Evan works">
+            <p class="image-caption">How Agent Evan works</p>
+
+            <p>We had to build three systems that work together perfectly: a mobile app, a server, and a desktop agent.
+                In 36 hours. With four people.</p>
+
+            <p>The mobile app runs native iOS in Swift and SwiftUI. We used Apple's new Liquid Glass design so it feels
+                like it belongs on your phone. Cartesia's Sonic model handles speech-to-text in near real-time. You
+                talk, Evan understands, all in milliseconds.</p>
+
+            <p>The server runs on Cloudflare Workers with Supabase S3 for storage. WebSockets keep your phone and
+                desktop connected instantly. When Evan creates something big like a presentation or a processed video,
+                it syncs through the cloud so you can access it anywhere.</p>
+
+            <p>The desktop agent is where the real magic happens. Built in Python with Claude as the brain. Every agent
+                runs inside its own sandboxed Docker container for security and isolation. This also lets us run
+                multiple tasks at the same time without anything breaking.</p>
+
+            <img src="/build-img/agent-evan-debug-ui.png" alt="Debugging interface for tools">
+            <p class="image-caption">Our debugging interface for tools</p>
+
+            <p>We built over 130 tools. Web search and fetch. Shell commands. File operations across your entire system.
+                Mail and calendar access. Browser control through Playwright. Jupyter notebook execution. LaTeX and
+                Pandoc for document generation. LibreOffice automation. OpenCV for image processing. PyTesseract for
+                OCR. Screen capture. Clipboard access. Process monitoring. Application launching. And dozens more.</p>
+
+            <p class="emphasis">130 tools. All available to the model at once. All the time.</p>
+
+            <p>That last part is important. Most agent frameworks try to be clever by hiding and showing tools based on
+                context. We did the opposite. We give Claude every single tool and let it figure out what to use. The
+                model knows best.</p>
+
+            <p>During development, when certain tools broke, Evan would notice and find alternative approaches on its
+                own. We never programmed that behavior. The model figured it out because we gave it the freedom to
+                think.</p>
+
+            <hr>
+
+            <h2>the hard parts</h2>
+
+            <p>Security versus access was brutal. We needed the agent to control your actual computer while keeping
+                everything sandboxed and safe. Getting a Linux VM inside Docker to expose exactly the right interfaces
+                took hours of debugging.</p>
+
+            <p>Real-time communication is fragile. WebSocket connections drop. Networks hiccup. Your phone and desktop
+                need to stay synced through all of it. We spent a huge chunk of time making the connection layer robust.
+            </p>
+
+            <p>Voice latency matters. When you speak a command, you expect near-instant response. Every millisecond in
+                the pipeline from speech to execution to confirmation had to be optimized.</p>
+
+            <p>Prompt engineering for tool selection was its own beast. Getting Claude to reliably choose the right
+                combination from 130+ tools required endless testing and iteration.</p>
+
+            <hr>
+
+            <h2>the win</h2>
+
+            <p class="emphasis">We won the HackRice 2025 AI Track.</p>
+
+            <p>We submitted at 8 AM. Completely exhausted. We passed out.</p>
+
+            <p>Funny story: we were so sleep deprived we didn't even show up to the final award ceremony. We only found
+                out we won because a friend texted us.</p>
+
+            <img src="/build-img/eric-text.jpg" alt="Instagram chat screenshot">
+            <p class="image-caption">THANK YOU, ERIC!!!</p>
+
+            <hr>
+
+            <h2>what we shipped</h2>
+
+            <p>An AI agent with full desktop access. 130+ tools for the model to choose from. Intelligent tool selection
+                and chaining. Concurrent execution for complex multi-step workflows. Real-time monitoring and updates.
+                Document and media creation. Voice and text commands from mobile. Sub-second response times.</p>
+
+            <p class="emphasis">You tell it what you want. It does it.</p>
+
+            <hr>
+
+            <h2>what's next</h2>
+
+            <p>Evan today is a small step toward something bigger.</p>
+
+            <p>Short term we want to expand beyond macOS, support more models, and polish the rough edges we didn't have
+                time to fix in 36 hours.</p>
+
+            <p>Long term, as reasoning models get more capable, Evan will handle increasingly complex workloads. The
+                goal is simple. You focus on the ideas. Evan brings them to life.</p>
+
+            <hr>
+
+            <h2>Agent Evan</h2>
+
+            <p class="team">Built at HackRice 2025 by <a href="https://www.linkedin.com/in/michelguo/" target="_blank">Michel Guo</a>, <a href="https://www.linkedin.com/in/hemeshch/" target="_blank">Hemesh Chadalavada</a>, <a href="https://www.linkedin.com/in/ethan-harjabrata/" target="_blank">Ethan Harjabrata</a>, and <a href="https://www.linkedin.com/in/demetris-chrysostomou-10052004/" target="_blank">Demetris Chrysostomou</a></p>
+
+            <div class="project-links">
+                <a href="https://devpost.com/software/agent-evan" target="_blank"
+                    class="project-link primary">Devpost</a>
+                <a href="https://github.com/michelg10/evanai-client" target="_blank"
+                    class="project-link secondary">GitHub</a>
+            </div>
+        </div>
+    </article>
+
+    <footer class="project-footer">
+        <p>Built by <a href="/">Hemesh Chadalavada</a></p>
+    </footer>
+</body>
+
+</html>
