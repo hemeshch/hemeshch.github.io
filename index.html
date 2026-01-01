@@ -6,28 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemesh Chadalavada</title>
 
-    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23222'/><text x='50' y='70' font-size='60' font-family='system-ui' font-weight='600' fill='white' text-anchor='middle'>H</text></svg>">
 
     <meta name="title" content="Hemesh Chadalavada - hemesh.tech">
-    <meta name="description"
-        content="Hemesh Chadalavada is a student innovator, entrepreneur and speaker. At the age of 13, he received the Bal Puraskar, India’s highest civilian honour for students, for his creation the 'Alpha Monitor'. In 2022, Hemesh won the Samsung Solve for Tomorrow Contest and received a grant of $40,000. In 2023, he was also awarded The Times of India's Unstoppable21.">
+    <meta name="description" content="Hemesh Chadalavada is a builder, engineer, and filmmaker studying Computer Engineering at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient. Samsung Solve for Tomorrow winner.">
+    <meta name="keywords" content="Hemesh Chadalavada, Rice University, AI engineer, agentic systems, Alpha Monitor, Agent Evan, Summer AI, HackRice, Prime Minister Bal Puraskar, Samsung Solve for Tomorrow">
+    <meta name="author" content="Hemesh Chadalavada">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hemesh.tech/">
 
     <meta name="google-site-verification" content="lQaMkoJcVuDgCSXr3GXGyFlRL3YXI0q6pSTsDWGNLJw" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Hemesh Chadalavada - hemesh.tech">
-    <meta property="og:description"
-        content="Hemesh Chadalavada is a student innovator, entrepreneur and speaker. At the age of 13, he received the Bal Puraskar, India’s highest civilian honour for students, for his creation the 'Alpha Monitor'. In 2022, Hemesh won the Samsung Solve for Tomorrow Contest and received a grant of $40,000. In 2023, he was also awarded The Times of India's Unstoppable21.">
-    <meta property="og:image" content="https://hemesh.tech/pitch.jpeg">
+    <meta property="og:url" content="https://hemesh.tech/">
+    <meta property="og:title" content="Hemesh Chadalavada - Builder, Engineer, Filmmaker">
+    <meta property="og:description" content="Builder, engineer, and filmmaker at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient.">
+    <meta property="og:image" content="https://hemesh.tech/cute/pitch.jpeg">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://hemesh.tech/pitch.jpeg">
-    <meta property="twitter:title" content="Hemesh Chadalavada - hemesh.tech">
-    <meta property="twitter:description"
-        content="Hemesh Chadalavada is a student innovator, entrepreneur and speaker. At the age of 13, he received the Bal Puraskar, India’s highest civilian honour for students, for his creation the 'Alpha Monitor'. In 2022, Hemesh won the Samsung Solve for Tomorrow Contest and received a grant of $40,000. In 2023, he was also awarded The Times of India's Unstoppable21.">
-    <meta property="twitter:image" content="https://hemesh.tech/pitch.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hemesh.tech/">
+    <meta name="twitter:title" content="Hemesh Chadalavada - Builder, Engineer, Filmmaker">
+    <meta name="twitter:description" content="Builder, engineer, and filmmaker at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient.">
+    <meta name="twitter:image" content="https://hemesh.tech/cute/pitch.jpeg">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1619,6 +1621,13 @@
         function closeProjectModal(projectId, event) {
             const modal = document.getElementById(projectId + 'Modal');
             if (modal) {
+                // Stop any playing videos
+                const iframes = modal.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    const src = iframe.src;
+                    iframe.src = '';
+                    iframe.src = src;
+                });
                 modal.classList.remove('active');
                 setTimeout(() => {
                     modal.style.display = 'none';
@@ -1629,6 +1638,13 @@
 
         function closeAllProjectModals() {
             document.querySelectorAll('.project-modal-overlay').forEach(modal => {
+                // Stop any playing videos
+                const iframes = modal.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    const src = iframe.src;
+                    iframe.src = '';
+                    iframe.src = src;
+                });
                 modal.classList.remove('active');
                 setTimeout(() => {
                     modal.style.display = 'none';
