@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemesh Chadalavada</title>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23222'/><text x='50' y='70' font-size='60' font-family='system-ui' font-weight='600' fill='white' text-anchor='middle'>H</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23222'/><text x='50' y='70' font-size='60' font-family='system-ui' font-weight='600' fill='white' text-anchor='middle'>H</text></svg>">
 
     <meta name="title" content="Hemesh Chadalavada - hemesh.tech">
-    <meta name="description" content="Hemesh Chadalavada is a builder, engineer, and filmmaker studying Computer Engineering at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient. Samsung Solve for Tomorrow winner.">
-    <meta name="keywords" content="Hemesh Chadalavada, Rice University, AI engineer, agentic systems, Alpha Monitor, Agent Evan, Summer AI, HackRice, Prime Minister Bal Puraskar, Samsung Solve for Tomorrow">
+    <meta name="description"
+        content="Hemesh Chadalavada is a builder, engineer, and filmmaker studying Computer Engineering at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient. Samsung Solve for Tomorrow winner.">
+    <meta name="keywords"
+        content="Hemesh Chadalavada, Rice University, AI engineer, agentic systems, Alpha Monitor, Agent Evan, Summer AI, HackRice, Prime Minister Bal Puraskar, Samsung Solve for Tomorrow">
     <meta name="author" content="Hemesh Chadalavada">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hemesh.tech/">
@@ -21,21 +24,49 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hemesh.tech/">
     <meta property="og:title" content="Hemesh Chadalavada - Builder, Engineer, Filmmaker">
-    <meta property="og:description" content="Builder, engineer, and filmmaker at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient.">
+    <meta property="og:description"
+        content="Builder, engineer, and filmmaker at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient.">
     <meta property="og:image" content="https://hemesh.tech/cute/pitch.webp">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://hemesh.tech/">
     <meta name="twitter:title" content="Hemesh Chadalavada - Builder, Engineer, Filmmaker">
-    <meta name="twitter:description" content="Builder, engineer, and filmmaker at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient.">
+    <meta name="twitter:description"
+        content="Builder, engineer, and filmmaker at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient.">
     <meta name="twitter:image" content="https://hemesh.tech/cute/pitch.webp">
 
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Young+Serif&display=swap"
-        rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Figtree';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/figtree-400.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'Figtree';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('fonts/figtree-500.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'Figtree';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('fonts/figtree-600.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'Young Serif';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('fonts/youngserif-400.ttf') format('truetype');
+        }
+    </style>
     <style>
         * {
             box-sizing: border-box;
@@ -983,6 +1014,97 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* Inspiration Gallery */
+        .inspiration-gallery {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            overflow: hidden;
+            position: relative;
+            padding: 30px 0 0 0;
+        }
+
+        .inspiration-gallery::before,
+        .inspiration-gallery::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .inspiration-gallery::before {
+            left: 0;
+            background: linear-gradient(to right, #fff, transparent);
+        }
+
+        .inspiration-gallery::after {
+            right: 0;
+            background: linear-gradient(to left, #fff, transparent);
+        }
+
+        .inspiration-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: scrollInspiration 90s linear infinite;
+        }
+
+        .inspiration-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollInspiration {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .inspiration-img {
+            flex-shrink: 0;
+            height: 200px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: rotate(var(--rotation, 0deg));
+            object-fit: cover;
+        }
+
+        .inspiration-img:nth-child(1) { --rotation: -2deg; }
+        .inspiration-img:nth-child(2) { --rotation: 1.5deg; }
+        .inspiration-img:nth-child(3) { --rotation: -1deg; }
+        .inspiration-img:nth-child(4) { --rotation: 2.5deg; }
+        .inspiration-img:nth-child(5) { --rotation: -1.5deg; }
+        .inspiration-img:nth-child(6) { --rotation: 1deg; }
+        .inspiration-img:nth-child(7) { --rotation: -2.5deg; }
+        .inspiration-img:nth-child(8) { --rotation: 2deg; }
+        .inspiration-img:nth-child(9) { --rotation: -1deg; }
+        .inspiration-img:nth-child(10) { --rotation: 1.5deg; }
+        .inspiration-img:nth-child(11) { --rotation: -2deg; }
+        .inspiration-img:nth-child(12) { --rotation: 2deg; }
+        .inspiration-img:nth-child(13) { --rotation: -1.5deg; }
+        .inspiration-img:nth-child(14) { --rotation: 1deg; }
+
+        .inspiration-img:hover {
+            transform: scale(1.1) rotate(0deg);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .inspiration-img {
+                height: 150px;
+            }
+
+            .inspiration-gallery {
+                padding: 20px 0 0 0;
+            }
+        }
     </style>
 </head>
 
@@ -1313,12 +1435,6 @@
             <li><a href="https://x.com/narendramodi/status/1353690264343220224" class="featured-link"
                     target="_blank">The GOATED Prime Minister Tweet</a></li>
         </ul>
-
-
-        <div class="footer-note">
-            <a href="/oldsite.html" target="_blank">old site (do not click)</a>
-        </div>
-
 
     </main>
 
@@ -1666,6 +1782,39 @@
             btn.childNodes[0].textContent = isShowing ? 'psst... more stuff ' : 'okay, hide them ';
         }
     </script>
+
+    <div class="inspiration-gallery">
+        <div class="inspiration-track">
+            <img loading="lazy" src="inspiration/killbill.webp" alt="Kill Bill" class="inspiration-img">
+            <img loading="lazy" src="inspiration/strangeparts.webp" alt="Strange Parts" class="inspiration-img">
+            <img loading="lazy" src="inspiration/baahubali.webp" alt="Baahubali" class="inspiration-img">
+            <img loading="lazy" src="inspiration/eevblog.webp" alt="EEVblog" class="inspiration-img">
+            <img loading="lazy" src="inspiration/zodiac.webp" alt="Zodiac" class="inspiration-img">
+            <img loading="lazy" src="inspiration/collinslab.webp" alt="Collins Lab" class="inspiration-img">
+            <img loading="lazy" src="inspiration/basterds.webp" alt="Inglourious Basterds" class="inspiration-img">
+            <img loading="lazy" src="inspiration/paulmcwhorter.webp" alt="Paul McWhorter" class="inspiration-img">
+            <img loading="lazy" src="inspiration/enthiran.avif" alt="Enthiran" class="inspiration-img">
+            <img loading="lazy" src="inspiration/benheckshow.webp" alt="Ben Heck Show" class="inspiration-img">
+            <img loading="lazy" src="inspiration/basquiat.webp" alt="Basquiat" class="inspiration-img">
+            <img loading="lazy" src="inspiration/hailmary.webp" alt="Project Hail Mary" class="inspiration-img">
+            <img loading="lazy" src="inspiration/tarantino.webp" alt="Tarantino" class="inspiration-img">
+            <img loading="lazy" src="inspiration/sanandreas.webp" alt="San Andreas" class="inspiration-img">
+            <img loading="lazy" src="inspiration/killbill.webp" alt="Kill Bill" class="inspiration-img">
+            <img loading="lazy" src="inspiration/strangeparts.webp" alt="Strange Parts" class="inspiration-img">
+            <img loading="lazy" src="inspiration/baahubali.webp" alt="Baahubali" class="inspiration-img">
+            <img loading="lazy" src="inspiration/eevblog.webp" alt="EEVblog" class="inspiration-img">
+            <img loading="lazy" src="inspiration/zodiac.webp" alt="Zodiac" class="inspiration-img">
+            <img loading="lazy" src="inspiration/collinslab.webp" alt="Collins Lab" class="inspiration-img">
+            <img loading="lazy" src="inspiration/basterds.webp" alt="Inglourious Basterds" class="inspiration-img">
+            <img loading="lazy" src="inspiration/paulmcwhorter.webp" alt="Paul McWhorter" class="inspiration-img">
+            <img loading="lazy" src="inspiration/enthiran.avif" alt="Enthiran" class="inspiration-img">
+            <img loading="lazy" src="inspiration/benheckshow.webp" alt="Ben Heck Show" class="inspiration-img">
+            <img loading="lazy" src="inspiration/basquiat.webp" alt="Basquiat" class="inspiration-img">
+            <img loading="lazy" src="inspiration/hailmary.webp" alt="Project Hail Mary" class="inspiration-img">
+            <img loading="lazy" src="inspiration/tarantino.webp" alt="Tarantino" class="inspiration-img">
+            <img loading="lazy" src="inspiration/sanandreas.webp" alt="San Andreas" class="inspiration-img">
+        </div>
+    </div>
 </body>
 
 </html>
