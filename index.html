@@ -45,6 +45,7 @@
             font-display: swap;
             src: url('fonts/figtree-400.ttf') format('truetype');
         }
+
         @font-face {
             font-family: 'Figtree';
             font-style: normal;
@@ -52,6 +53,7 @@
             font-display: swap;
             src: url('fonts/figtree-500.ttf') format('truetype');
         }
+
         @font-face {
             font-family: 'Figtree';
             font-style: normal;
@@ -59,6 +61,7 @@
             font-display: swap;
             src: url('fonts/figtree-600.ttf') format('truetype');
         }
+
         @font-face {
             font-family: 'Young Serif';
             font-style: normal;
@@ -1060,6 +1063,7 @@
             0% {
                 transform: translateX(0);
             }
+
             100% {
                 transform: translateX(-50%);
             }
@@ -1075,20 +1079,61 @@
             object-fit: cover;
         }
 
-        .inspiration-img:nth-child(1) { --rotation: -2deg; }
-        .inspiration-img:nth-child(2) { --rotation: 1.5deg; }
-        .inspiration-img:nth-child(3) { --rotation: -1deg; }
-        .inspiration-img:nth-child(4) { --rotation: 2.5deg; }
-        .inspiration-img:nth-child(5) { --rotation: -1.5deg; }
-        .inspiration-img:nth-child(6) { --rotation: 1deg; }
-        .inspiration-img:nth-child(7) { --rotation: -2.5deg; }
-        .inspiration-img:nth-child(8) { --rotation: 2deg; }
-        .inspiration-img:nth-child(9) { --rotation: -1deg; }
-        .inspiration-img:nth-child(10) { --rotation: 1.5deg; }
-        .inspiration-img:nth-child(11) { --rotation: -2deg; }
-        .inspiration-img:nth-child(12) { --rotation: 2deg; }
-        .inspiration-img:nth-child(13) { --rotation: -1.5deg; }
-        .inspiration-img:nth-child(14) { --rotation: 1deg; }
+        .inspiration-img:nth-child(1) {
+            --rotation: -2deg;
+        }
+
+        .inspiration-img:nth-child(2) {
+            --rotation: 1.5deg;
+        }
+
+        .inspiration-img:nth-child(3) {
+            --rotation: -1deg;
+        }
+
+        .inspiration-img:nth-child(4) {
+            --rotation: 2.5deg;
+        }
+
+        .inspiration-img:nth-child(5) {
+            --rotation: -1.5deg;
+        }
+
+        .inspiration-img:nth-child(6) {
+            --rotation: 1deg;
+        }
+
+        .inspiration-img:nth-child(7) {
+            --rotation: -2.5deg;
+        }
+
+        .inspiration-img:nth-child(8) {
+            --rotation: 2deg;
+        }
+
+        .inspiration-img:nth-child(9) {
+            --rotation: -1deg;
+        }
+
+        .inspiration-img:nth-child(10) {
+            --rotation: 1.5deg;
+        }
+
+        .inspiration-img:nth-child(11) {
+            --rotation: -2deg;
+        }
+
+        .inspiration-img:nth-child(12) {
+            --rotation: 2deg;
+        }
+
+        .inspiration-img:nth-child(13) {
+            --rotation: -1.5deg;
+        }
+
+        .inspiration-img:nth-child(14) {
+            --rotation: 1deg;
+        }
 
         .inspiration-img:hover {
             transform: scale(1.1) rotate(0deg);
@@ -1181,7 +1226,23 @@
         <h2 id="builds">builds</h2>
 
         <div class="projects-grid">
-            <a href="/builds/alpha-monitor.html" class="project-card">
+
+            <a href="/builds/summer-ai" class="project-card">
+                <img src="/build-img/summer-cover.webp" alt="Summer AI" class="project-image" loading="lazy">
+                <div class="project-content">
+                    <h3 class="project-title">summer ai</h3>
+                    <p class="project-subtitle">a proactive ai agent on imessage that knows you better than you do (with
+                        135+ tools).</p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">multi-agent systems</span>
+                        </div>
+                        <span class="project-date">oct. 2025</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="/builds/alpha-monitor" class="project-card">
                 <img src="/build-img/pitch.webp" alt="Alpha Monitor" class="project-image" loading="lazy">
                 <div class="project-content">
                     <h3 class="project-title">alpha monitor</h3>
@@ -1197,7 +1258,7 @@
                 </div>
             </a>
 
-            <a href="/builds/agent-evan.html" class="project-card">
+            <a href="/builds/agent-evan" class="project-card">
                 <img src="/build-img/agent-evan-cover.webp" alt="agent evan" class="project-image" loading="lazy">
                 <div class="project-content">
                     <h3 class="project-title">agent evan</h3>
@@ -1212,21 +1273,6 @@
                 </div>
             </a>
 
-
-            <a href="/builds/summer-ai.html" class="project-card">
-                <img src="/build-img/summer-cover.webp" alt="Summer AI" class="project-image" loading="lazy">
-                <div class="project-content">
-                    <h3 class="project-title">summer ai</h3>
-                    <p class="project-subtitle">a proactive ai agent on imessage that knows you better than you do (with
-                        135+ tools).</p>
-                    <div class="project-meta">
-                        <div class="project-categories">
-                            <span class="project-category">multi-agent systems</span>
-                        </div>
-                        <span class="project-date">oct. 2025</span>
-                    </div>
-                </div>
-            </a>
 
             <a href="#" onclick="openProjectModal('hootplanner'); return false;" class="project-card">
                 <img src="/build-img/hootplanner-1.webp" alt="HootPlanner" class="project-image" loading="lazy">
