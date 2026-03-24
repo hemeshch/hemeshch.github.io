@@ -504,7 +504,7 @@
         </nav>
     </header>
 
-    <a href="/#builds" class="back-link">back to all builds</a>
+    <a href="/#builds" class="back-link" onclick="if (document.referrer && document.referrer.includes(location.hostname)) { history.back(); return false; }">back to all builds</a>
 
     <article>
         <div class="project-header">

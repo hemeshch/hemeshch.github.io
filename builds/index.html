@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Builds - Hemesh Chadalavada</title>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23222'/><text x='50' y='70' font-size='60' font-family='system-ui' font-weight='600' fill='white' text-anchor='middle'>H</text></svg>">
+
+    <meta name="title" content="Builds - Enterprise AI & Automation - Hemesh Chadalavada">
+    <meta name="description"
+        content="We build enterprise-grade AI tools and agentic systems that automate operations, eliminate inefficiencies, and scale your business. See our recent work.">
+    <meta name="author" content="Hemesh Chadalavada">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Builds - Enterprise AI & Automation">
+    <meta property="og:description"
+        content="We build enterprise-grade AI tools and agentic systems that automate operations, eliminate inefficiencies, and scale your business.">
+    <meta property="og:image" content="https://hemesh.tech/build-img/agent-evan-cover.webp">
+
+    <style>
+        @font-face {
+            font-family: 'Figtree';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('../fonts/figtree-400.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Figtree';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('../fonts/figtree-500.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Figtree';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('../fonts/figtree-600.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Young Serif';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('../fonts/youngserif-400.ttf') format('truetype');
+        }
+    </style>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .site-title {
+            font-family: 'Young Serif', serif;
+            font-size: 1.5rem;
+            font-weight: normal;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .site-title:hover {
+            color: #000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f6f6f6;
+            padding: 8px;
+            border-radius: 4px;
+            color: #222;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: 1px solid #eee;
+        }
+
+        .nav-links a:hover {
+            background: #eee;
+            transform: translateY(-2px);
+            border-color: #ddd;
+        }
+
+        .nav-links .nav-text {
+            padding: 6px 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Young Serif', serif;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: normal;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: #eee;
+            margin: 40px 0;
+        }
+
+        /* Photo Scroll */
+        .photo-scroll-container {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            overflow: hidden;
+            margin-bottom: 35px;
+            position: relative;
+            padding: 12px 0;
+        }
+
+        .photo-scroll-container::before,
+        .photo-scroll-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .photo-scroll-container::before {
+            left: 0;
+            background: linear-gradient(to right, #fff, transparent);
+        }
+
+        .photo-scroll-container::after {
+            right: 0;
+            background: linear-gradient(to left, #fff, transparent);
+        }
+
+        .photo-scroll-track {
+            display: flex;
+            gap: 16px;
+            animation: scrollPhotos 120s linear infinite;
+            width: max-content;
+        }
+
+        .photo-scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        .scroll-photo {
+            flex-shrink: 0;
+            height: 155px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            transform: rotate(var(--rotation, 0deg));
+            object-fit: cover;
+        }
+
+        .scroll-photo:nth-child(odd) {
+            --rotation: -1.5deg;
+        }
+
+        .scroll-photo:nth-child(even) {
+            --rotation: 1.5deg;
+        }
+
+        .scroll-photo:nth-child(3n) {
+            --rotation: 2deg;
+        }
+
+        .scroll-photo:hover {
+            transform: scale(1.08) rotate(0deg);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        @keyframes scrollPhotos {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Hero */
+        .hero {
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+        }
+
+        .hero-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #222;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid #222;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: #222;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background: #f6f6f6;
+            transform: translateY(-2px);
+        }
+
+        .btn-arrow {
+            transition: transform 0.2s ease;
+        }
+
+        .btn-primary:hover .btn-arrow,
+        .btn-secondary:hover .btn-arrow {
+            transform: translateX(3px);
+        }
+
+        /* Credibility bar */
+        .credibility {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 0 50px;
+        }
+
+        .cred-item {
+            background: #fafafa;
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .cred-number {
+            font-family: 'Young Serif', serif;
+            font-size: 1.8rem;
+            color: #111;
+            margin-bottom: 4px;
+        }
+
+        .cred-label {
+            font-size: 0.85rem;
+            color: #777;
+            line-height: 1.4;
+        }
+
+        /* What we do */
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .value-prop {
+            margin-bottom: 45px;
+        }
+
+        .value-prop h2 {
+            font-size: 2rem;
+            color: #111;
+            margin-top: 0;
+            margin-bottom: 12px;
+            max-width: 650px;
+        }
+
+        .value-prop>p {
+            color: #555;
+            font-size: 1.15rem;
+        }
+
+        .capabilities {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .capability {
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 28px 24px;
+            transition: all 0.2s ease;
+        }
+
+        .capability:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            border-color: #ddd;
+        }
+
+        .capability-icon {
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+        }
+
+        .capability h3 {
+            font-size: 1.1rem;
+            font-weight: normal;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        .capability p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* Process */
+        .process {
+            margin-bottom: 45px;
+        }
+
+        .process h2 {
+            font-size: 2rem;
+            color: #111;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .process>p {
+            color: #555;
+            font-size: 1.15rem;
+            margin-bottom: 36px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .process-step {
+            padding: 0 24px;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            right: 0;
+            height: 1px;
+            width: 24px;
+            background: #ddd;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #222;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .process-step h3 {
+            font-size: 1.05rem;
+            font-weight: normal;
+            color: #111;
+            margin-bottom: 8px;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* Builds grid */
+        .builds-section {
+            margin-bottom: 45px;
+        }
+
+        .builds-section h2 {
+            font-size: 2rem;
+            color: #111;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .builds-section>p {
+            color: #555;
+            font-size: 1.15rem;
+            margin-bottom: 32px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            transition: all 0.2s ease;
+            background: #fff;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border-color: #ddd;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            background: #f5f5f5;
+        }
+
+        .project-content {
+            padding: 20px 22px 22px;
+        }
+
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: normal;
+            margin-bottom: 6px;
+            color: #111;
+        }
+
+        .project-subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-categories {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .project-category {
+            background: #f0f0f0;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .project-date {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #888;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-card.coming-soon {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .project-card.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .project-card.coming-soon .project-image {
+            filter: grayscale(0.4);
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            color: #111;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            color: #555;
+            font-size: 1.15rem;
+            margin-bottom: 28px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Email Popup */
+        .email-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .email-popup-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .email-popup {
+            background: white;
+            padding: 32px 36px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            text-align: left;
+            transform: scale(0.95) translateY(10px);
+            transition: all 0.25s ease;
+            max-width: 90%;
+            min-width: 300px;
+        }
+
+        .email-popup-overlay.active .email-popup {
+            transform: scale(1) translateY(0);
+        }
+
+        .email-popup h3 {
+            font-family: 'Young Serif', serif;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+            font-weight: normal;
+        }
+
+        .email-popup .popup-subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .email-popup .email-address {
+            font-size: 1.1rem;
+            color: #333;
+            background: #f6f6f6;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .email-popup .email-address:hover {
+            background: #eee;
+        }
+
+        .email-popup .copy-hint {
+            font-size: 0.8rem;
+            color: #999;
+            margin-left: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .footer a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .capabilities {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .process-step:not(:last-child)::after {
+                display: none;
+            }
+
+            .credibility {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capabilities {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .credibility {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cred-item {
+                padding: 20px 16px;
+            }
+
+            .cred-number {
+                font-size: 1.5rem;
+            }
+
+            .project-image {
+                height: 180px;
+            }
+
+            .scroll-photo {
+                height: 120px;
+            }
+
+            .last-name {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/" class="site-title">Hemesh <span class="last-name">Chadalavada</span></a>
+        <nav class="nav-links">
+            <a href="#" onclick="openEmailPopup(); return false;" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/hemeshch/" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Photo Scroll -->
+        <div class="photo-scroll-container">
+            <div class="photo-scroll-track">
+                <img src="/build-img/agent-evan-cover.webp" alt="Agent Evan" class="scroll-photo">
+                <img src="/cute/pitch.webp" alt="Hemesh pitching" class="scroll-photo">
+                <img src="/build-img/universis-dashboard.webp" alt="Universis Dashboard" class="scroll-photo">
+                <img src="/cute/DSC00437.webp" alt="Hemesh" class="scroll-photo">
+                <img src="/build-img/hootplanner-1.webp" alt="HootPlanner" class="scroll-photo">
+                <img src="/build-img/evan-tools.webp" alt="Agent Evan tools" class="scroll-photo">
+                <img src="/cute/riceapps-vid.webp" alt="Hemesh at RiceApps" class="scroll-photo">
+                <img src="/build-img/lockin-2.webp" alt="LockIn" class="scroll-photo">
+                <img src="/build-img/summer-cover.webp" alt="Summer AI" class="scroll-photo">
+                <img src="/cute/IMG_0071.webp" alt="Hemesh" class="scroll-photo">
+                <img src="/build-img/universis.webp" alt="Universis" class="scroll-photo">
+                <img src="/build-img/evan-calendar.webp" alt="Agent Evan calendar" class="scroll-photo">
+                <img src="/cute/DSC02422.webp" alt="Hemesh" class="scroll-photo">
+                <img src="/build-img/hootplanner-2.webp" alt="HootPlanner research" class="scroll-photo">
+                <img src="/build-img/alphamonitor.webp" alt="Alpha Monitor" class="scroll-photo">
+                <img src="/cute/tw-pfp-5.webp" alt="Hemesh" class="scroll-photo">
+
+                <img src="/build-img/agent-evan-cover.webp" alt="Agent Evan" class="scroll-photo">
+                <img src="/cute/pitch.webp" alt="Hemesh pitching" class="scroll-photo">
+                <img src="/build-img/universis-dashboard.webp" alt="Universis Dashboard" class="scroll-photo">
+                <img src="/cute/DSC00437.webp" alt="Hemesh" class="scroll-photo">
+                <img src="/build-img/hootplanner-1.webp" alt="HootPlanner" class="scroll-photo">
+                <img src="/build-img/evan-tools.webp" alt="Agent Evan tools" class="scroll-photo">
+                <img src="/cute/riceapps-vid.webp" alt="Hemesh at RiceApps" class="scroll-photo">
+                <img src="/build-img/lockin-2.webp" alt="LockIn" class="scroll-photo">
+                <img src="/build-img/summer-cover.webp" alt="Summer AI" class="scroll-photo">
+                <img src="/cute/IMG_0071.webp" alt="Hemesh" class="scroll-photo">
+                <img src="/build-img/universis.webp" alt="Universis" class="scroll-photo">
+                <img src="/build-img/evan-calendar.webp" alt="Agent Evan calendar" class="scroll-photo">
+                <img src="/cute/DSC02422.webp" alt="Hemesh" class="scroll-photo">
+                <img src="/build-img/hootplanner-2.webp" alt="HootPlanner research" class="scroll-photo">
+                <img src="/build-img/alphamonitor.webp" alt="Alpha Monitor" class="scroll-photo">
+                <img src="/cute/tw-pfp-5.webp" alt="Hemesh" class="scroll-photo">
+            </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-label">For businesses</div>
+            <h1>We find inefficiencies. Then build AI to fix them.</h1>
+            <p>We analyze your workflows, find where time and money are wasted, and build enterprise-grade agentic systems and AI tools to fix it.</p>
+
+            <div class="hero-cta">
+                <a href="https://cal.com/hemeshch/quick" target="_blank" class="btn-primary">Book a call <span class="btn-arrow">&rarr;</span></a>
+                <a href="#builds" class="btn-secondary">See recent work</a>
+            </div>
+        </div>
+
+        <!-- Credibility -->
+        <div class="credibility">
+            <div class="cred-item">
+                <div class="cred-number">98.2%</div>
+                <div class="cred-label">AI outperforming human experts</div>
+            </div>
+            <div class="cred-item">
+                <div class="cred-number">135+</div>
+                <div class="cred-label">Tools built into agentic systems</div>
+            </div>
+            <div class="cred-item">
+                <div class="cred-number">12+</div>
+                <div class="cred-label">Production systems shipped</div>
+            </div>
+            <div class="cred-item">
+                <div class="cred-number">$150k+</div>
+                <div class="cred-label">In contracts and grants</div>
+            </div>
+        </div>
+
+        <!-- Builds -->
+        <div class="builds-section" id="builds">
+            <div class="section-label">Recent work</div>
+            <h2>Applications we've built.</h2>
+            <p>Enterprise tools, agentic systems, and AI pipelines shipped to production.</p>
+
+            <div class="projects-grid">
+
+                <a href="/builds/agent-evan" class="project-card">
+                    <img src="/build-img/agent-evan-cover.webp" alt="Agent Evan" class="project-image" loading="lazy">
+                    <div class="project-content">
+                        <h3 class="project-title">Agent Evan</h3>
+                        <p class="project-subtitle">An agentic desktop system that controls computers remotely. Tell it what you want, watch it execute. Any task, from anywhere.</p>
+                        <div class="project-meta">
+                            <div class="project-categories">
+                                <span class="project-category">agentic orchestration</span>
+                                <span class="project-category">remote execution</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/builds/summer-ai" class="project-card">
+                    <img src="/build-img/summer-cover.webp" alt="Summer AI" class="project-image" loading="lazy">
+                    <div class="project-content">
+                        <h3 class="project-title">Summer AI</h3>
+                        <p class="project-subtitle">A proactive AI agent on iMessage that knows you better than you do. 135+ tools, multi-agent orchestration.</p>
+                        <div class="project-meta">
+                            <div class="project-categories">
+                                <span class="project-category">multi-agent systems</span>
+                                <span class="project-category">135+ tools</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/builds/alpha-monitor" class="project-card">
+                    <img src="/build-img/pitch.webp" alt="Alpha Monitor" class="project-image" loading="lazy">
+                    <div class="project-content">
+                        <h3 class="project-title">Alpha Monitor</h3>
+                        <p class="project-subtitle">Spent 6 years building a wearable device for my grandma with Alzheimer's. $40k Samsung grant. Met the Prime Minister.</p>
+                        <div class="project-meta">
+                            <div class="project-categories">
+                                <span class="project-category">hardware</span>
+                                <span class="project-category">on-device ml</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" onclick="openProjectModal('spicy'); return false;" class="project-card">
+                    <img src="/build-img/spicy-1.webp" alt="Spicy" class="project-image" loading="lazy">
+                    <div class="project-content">
+                        <h3 class="project-title">Spicy</h3>
+                        <p class="project-subtitle">An AI copilot for LTSpice. Describe any change, ask questions, or build entire circuits from text.</p>
+                        <div class="project-meta">
+                            <div class="project-categories">
+                                <span class="project-category">AI copilot</span>
+                                <span class="project-category">circuit simulation</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" onclick="openProjectModal('universis'); return false;" class="project-card">
+                    <img src="/build-img/universis.webp" alt="Universis" class="project-image" loading="lazy">
+                    <div class="project-content">
+                        <h3 class="project-title">Universis</h3>
+                        <p class="project-subtitle">AI medical coding tool that outperformed human experts with 98.2% accuracy. 69,000+ ICD codes indexed and searchable.</p>
+                        <div class="project-meta">
+                            <div class="project-categories">
+                                <span class="project-category">rag pipeline</span>
+                                <span class="project-category">medical nlp</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" onclick="openProjectModal('hootplanner'); return false;" class="project-card">
+                    <img src="/build-img/hootplanner-1.webp" alt="HootPlanner" class="project-image" loading="lazy">
+                    <div class="project-content">
+                        <h3 class="project-title">HootPlanner</h3>
+                        <p class="project-subtitle">1st place HackRice. A personalized recommendation engine using RAG and vector search. Semantic matching at scale.</p>
+                        <div class="project-meta">
+                            <div class="project-categories">
+                                <span class="project-category">etl pipeline</span>
+                                <span class="project-category">vector search</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- What we do -->
+        <div class="value-prop">
+            <div class="section-label">What we build</div>
+            <h2>We're not a software vendor. We build tools that think.</h2>
+            <p>We analyze your operations, identify inefficiencies you didn't know existed, and build AI-native
+                solutions tailored to your business.</p>
+
+            <div class="capabilities">
+                <div class="capability">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="#222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9" />
+                            <path
+                                d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z" />
+                        </svg>
+                    </div>
+                    <h3>Workflow Automation</h3>
+                    <p>CRM integrations, invoice processing, document pipelines, email automation. We eliminate the
+                        manual work eating your margins.</p>
+                </div>
+                <div class="capability">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="#222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                            <path d="m7.5 4.27 9 5.15" />
+                            <polyline points="3.29 7 12 12 20.71 7" />
+                            <line x1="12" y1="22" x2="12" y2="12" />
+                        </svg>
+                    </div>
+                    <h3>Agentic Systems</h3>
+                    <p>AI agents that take real action. Meeting analysis, lead scoring, proposal generation, customer
+                        support. Humans in the loop where it matters.</p>
+                </div>
+                <div class="capability">
+                    <div class="capability-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="#222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18" />
+                            <path d="m19 9-5 5-4-4-3 3" />
+                        </svg>
+                    </div>
+                    <h3>Business Intelligence</h3>
+                    <p>A background engine that identifies where money is spent, where time is wasted, and surfaces
+                        insights your existing tools can't.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Process -->
+        <div class="process">
+            <div class="section-label">How we work</div>
+            <h2>A process built around your business.</h2>
+            <p>We don't throw software over a wall. We embed with your team, understand your operations, and build tools
+                that actually get used.</p>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Discover</h3>
+                    <p>We meet your team, map your daily workflows, audit your existing platforms, and identify the
+                        biggest time sinks and revenue losses.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Scope</h3>
+                    <p>We follow up with a SWOT analysis, solution proposals, mockups, and a clear roadmap with budget.
+                        You pick what gets built.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Build</h3>
+                    <p>Full product design, system architecture, and development. Wireframes, specs, and continuous
+                        feedback loops with your team at every stage.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Deploy</h3>
+                    <p>We ship, monitor, and iterate. Post-launch optimization to ensure the tools perform under real
+                        load and deliver measurable ROI.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>Let's build something.</h2>
+            <p>Tell us what's slowing your business down. We'll figure out how to fix it.</p>
+            <a href="https://cal.com/hemeshch/quick" target="_blank" class="btn-primary">Book a call <span
+                    class="btn-arrow">&rarr;</span></a>
+        </div>
+
+    </main>
+
+    <div class="footer">
+        <a href="/">hemesh.tech</a>
+    </div>
+
+    <!-- Email Popup -->
+    <div class="email-popup-overlay" id="emailPopup" onclick="closeEmailPopup(event)">
+        <div class="email-popup" onclick="event.stopPropagation()">
+            <h3>let's chat!</h3>
+            <p class="popup-subtitle">tell us about your business. we'll set up a call.</p>
+            <div class="email-address" onclick="copyEmail()">
+                <span>hemesh@rice.edu</span>
+                <span class="copy-hint" id="copyHint">copy</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal: Spicy -->
+    <div class="project-modal-overlay" id="spicyModal" onclick="closeProjectModal('spicy', event)">
+        <div class="project-modal" onclick="event.stopPropagation()">
+            <button class="project-modal-close" onclick="closeProjectModal('spicy')">&times;</button>
+
+            <div class="project-modal-header">
+                <h1>Spicy</h1>
+                <p class="tagline">An AI copilot for LTSpice built for electrical engineers.</p>
+
+                <div class="meta">
+                    <span class="date">2025</span>
+                    <div class="tags">
+                        <span class="tag">AI copilot</span>
+                        <span class="tag">circuit simulation</span>
+                        <span class="tag">native macOS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-modal-content">
+                <div class="video-container video-lazy" data-video-id="7_ovL6KgntE" onclick="loadVideo(this)">
+                    <img src="/build-img/spicy-hero.webp" alt="Spicy Demo" class="video-thumb" loading="lazy">
+                    <div class="video-play-btn">
+                        <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                    </div>
+                </div>
+
+                <div class="tldr">
+                    <div class="tldr-title">TL;DR</div>
+                    <p>Built an AI interface for the most used (and hated) circuit simulator on the planet. Describe any change, ask questions, or build entire circuits completely from text. Native macOS app with 10+ models.</p>
+                </div>
+
+                <h2>The Problem</h2>
+                <p>LTSpice is the industry standard for circuit simulation in electrical engineering. It's also the most unintuitive software I've ever touched. Straight out of 2001.</p>
+
+                <img src="/build-img/ltspice.webp" alt="LTSpice interface" loading="lazy">
+
+                <h2>The Solution</h2>
+                <p>Spicy sits on top of LTSpice. You describe what you want, Spicy writes the schematic, modifies the netlist, and reloads LTSpice automatically. No more dragging wires to the wrong node.</p>
+
+                <p><strong>"Build me a buck converter with a 12V input, NMOS switch..."</strong></p>
+                <p><strong>"Add a 100nF decoupling cap between VCC and ground."</strong></p>
+                <p><strong>"Swap the BJT for a MOSFET."</strong></p>
+
+                <img src="/build-img/spicy-1.webp" alt="Spicy interface" loading="lazy">
+
+                <h2>Under The Hood</h2>
+                <p>Spicy understands SPICE at a really high level. Wire syntax, flag syntax, symbol placement with full rotation matrices, pin offset calculations per component type.</p>
+
+                <p>Had to reverse-engineer the format myself because there's no official spec.</p>
+
+                <p style="font-size: 1.15rem; font-weight: 500; color: #222; background: linear-gradient(to bottom, transparent 60%, rgba(255, 230, 0, 0.3) 60%); display: inline;">Built as a native macOS app. UI inspired by vintage Apple. 10+ models available including Claude, GPT-5, Gemini, Kimi, MiniMax, and GLM.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal: Universis -->
+    <div class="project-modal-overlay" id="universisModal" onclick="closeProjectModal('universis', event)">
+        <div class="project-modal" onclick="event.stopPropagation()">
+            <button class="project-modal-close" onclick="closeProjectModal('universis')">&times;</button>
+
+            <div class="project-modal-header">
+                <h1>Universis</h1>
+                <p class="tagline">AI medical coding that outperformed human experts with 98.2% accuracy.</p>
+
+                <div class="meta">
+                    <span class="date">2024</span>
+                    <div class="tags">
+                        <span class="tag">rag pipeline</span>
+                        <span class="tag">semantic search</span>
+                        <span class="tag">medical nlp</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-modal-content">
+                <img src="/build-img/universis.webp" alt="Universis Dashboard" loading="lazy">
+
+                <div class="tldr">
+                    <div class="tldr-title">TL;DR</div>
+                    <p>Built an AI medical coding system that achieved 98.2% accuracy in orthopedics, outperforming
+                        human experts. 69,000+ ICD-10-CM codes. 80,000+ CPT codes. All indexed and searchable. Received
+                        acquisition offers from top RCM companies and interviewed with Y Combinator W25.</p>
+                </div>
+
+                <h2>The Problem</h2>
+                <p>Healthcare providers waste $19.7 billion per year due to incorrect medical claims, denials, and
+                    delays. Medical coders spend hours manually converting patient charts into ICD-10, CPT, and HCPCS
+                    codes. The cognitive load leads to errors that cost hospitals serious money.</p>
+
+                <p>Other companies have tried AI-powered coding assistance. They haven't been adopted because their
+                    accuracy sucks. Fine-tuned LLMs hallucinate codes that don't exist. Healthcare providers can't
+                    afford that risk.</p>
+
+                <img src="/build-img/universis-human.webp" alt="Universis vs Human Coders" loading="lazy">
+
+                <h2>The Solution</h2>
+                <p>Universis converts patient charts into billing codes with higher accuracy than human professionals.
+                    Upload electronic health records, get the correct diagnosis and procedure codes back.</p>
+
+                <p>We built our own RAG pipeline and semantic search engine. No LLM hallucinations. The system achieved
+                    98.2% accuracy and reduced manual coding time by 85% across pilot deployments.</p>
+
+                <p
+                    style="font-size: 1.15rem; font-weight: 500; color: #222; background: linear-gradient(to bottom, transparent 60%, rgba(255, 230, 0, 0.3) 60%); display: inline;">
+                    69,000+ ICD-10-CM codes. 80,000+ CPT codes. All indexed and searchable.</p>
+
+                <img src="/build-img/universis-dashboard.webp" alt="Universis Dashboard" loading="lazy">
+
+                <h2>The Traction</h2>
+                <p>Worked with 40+ revenue cycle managers. Received acquisition offers from top RCM companies.
+                    Interviewed with Y Combinator W25.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal: HootPlanner -->
+    <div class="project-modal-overlay" id="hootplannerModal" onclick="closeProjectModal('hootplanner', event)">
+        <div class="project-modal" onclick="event.stopPropagation()">
+            <button class="project-modal-close" onclick="closeProjectModal('hootplanner')">&times;</button>
+
+            <div class="project-modal-header">
+                <h1>HootPlanner</h1>
+                <p class="tagline">The only Rice course schedule + extracurricular recommendation system.</p>
+
+                <div class="meta">
+                    <span class="date">September 2024</span>
+                    <div class="tags">
+                        <span class="tag">1st place hackrice</span>
+                        <span class="tag">rag pipeline</span>
+                        <span class="tag">lancedb</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-modal-content">
+                <div class="video-container video-lazy" data-video-id="ipzoyTPznfA" onclick="loadVideo(this)">
+                    <img src="/build-img/hootplanner-1.webp" alt="HootPlanner Demo" class="video-thumb" loading="lazy">
+                    <div class="video-play-btn">
+                        <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                    </div>
+                </div>
+
+                <div class="tldr">
+                    <div class="tldr-title">TL;DR</div>
+                    <p>Won First Place at HackRice 2024. Built a personalized course scheduling, research opportunity
+                        finder, and club recommendation system for Rice students using RAG and vector search.</p>
+                </div>
+
+                <h2>The Problem</h2>
+                <p>Course discovery and scheduling is overwhelming. Students miss research opportunities they never knew
+                    existed. Too many choices in clubs and activities leads to decision paralysis.</p>
+
+                <h2>The Solution</h2>
+                <p>HootPlanner is the one-stop shop for students preparing for their careers in college. Craft perfect
+                    class schedules in seconds. Discover research projects tailored to your passions. Find clubs and
+                    activities you'll actually love.</p>
+
+                <img src="/build-img/hootplanner-1.webp" alt="HootPlanner Course Scheduler" loading="lazy">
+
+                <img src="/build-img/hootplanner-2.webp" alt="HootPlanner Research Opportunities" loading="lazy">
+
+                <img src="/build-img/hootplanner-3.webp" alt="HootPlanner Club Discovery" loading="lazy">
+
+                <h2>The Build</h2>
+                <p>Backend powered by FastAPI handling student onboarding, course recommendations, club suggestions, and
+                    research opportunities. We integrated LanceDB for vector search, using pre-trained language models
+                    to generate embeddings for semantic matching.</p>
+
+                <p>Frontend built with Next.js and Tailwind CSS. The RAG pipeline handles batch processing and cosine
+                    similarity calculations to provide personalized recommendations based on students' interests and
+                    academic profiles.</p>
+
+                <p
+                    style="font-size: 1.15rem; font-weight: 500; color: #222; background: linear-gradient(to bottom, transparent 60%, rgba(255, 230, 0, 0.3) 60%); display: inline;">
+                    Goes beyond simple keyword matching to offer truly valuable recommendations.</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Modal styles */
+        .project-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: flex-start;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            padding: 40px 20px;
+        }
+
+        .project-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .project-modal {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+            max-width: 800px;
+            width: 100%;
+            transform: scale(0.95) translateY(20px);
+            transition: all 0.3s ease;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .project-modal-overlay.active .project-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .project-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: #f0f0f0;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #666;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .project-modal-close:hover {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .project-modal-header {
+            padding: 40px 40px 0;
+        }
+
+        .project-modal-header h1 {
+            font-family: 'Young Serif', serif;
+            font-size: 2.2rem;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+
+        .project-modal-header .tagline {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .project-modal-header .meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .project-modal-header .date {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .project-modal-header .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .project-modal-header .tag {
+            background: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .project-modal-content {
+            padding: 0 40px 40px;
+        }
+
+        .project-modal-content h2 {
+            font-family: 'Young Serif', serif;
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: #222;
+        }
+
+        .project-modal-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 16px;
+        }
+
+        .project-modal-content img:not(.video-thumb) {
+            max-width: min(100%, 700px);
+            height: auto;
+            border-radius: 8px;
+            margin: 24px auto;
+            display: block;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-modal-content .tldr {
+            background: #f8f8f8;
+            border-left: 3px solid #333;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .project-modal-content .tldr-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .project-modal-content .tldr p {
+            margin: 0;
+            color: #333;
+        }
+
+        .project-modal-content .video-lazy {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-modal-content .video-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .project-modal-content .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.85;
+            transition: opacity 0.2s ease;
+        }
+
+        .project-modal-content .video-lazy:hover .video-play-btn {
+            opacity: 1;
+        }
+
+        .project-modal-content .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            margin: 0 0 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-modal-content .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 600px) {
+            .project-modal-overlay {
+                padding: 20px 12px;
+            }
+
+            .project-modal-header,
+            .project-modal-content {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .project-modal-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+
+    <script>
+        function loadVideo(el) {
+            const id = el.dataset.videoId;
+            el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>';
+            el.classList.remove('video-lazy');
+            el.style.cursor = 'default';
+            el.onclick = null;
+        }
+
+        function openEmailPopup() {
+            const popup = document.getElementById('emailPopup');
+            popup.style.display = 'flex';
+            setTimeout(() => popup.classList.add('active'), 10);
+        }
+
+        function closeEmailPopup(event) {
+            const popup = document.getElementById('emailPopup');
+            popup.classList.remove('active');
+            setTimeout(() => {
+                popup.style.display = 'none';
+                document.getElementById('copyHint').textContent = 'copy';
+            }, 200);
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('hemesh@rice.edu').then(() => {
+                const hint = document.getElementById('copyHint');
+                hint.textContent = 'copied!';
+            });
+        }
+
+        function openProjectModal(projectId) {
+            const modal = document.getElementById(projectId + 'Modal');
+            if (modal) {
+                document.body.style.overflow = 'hidden';
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('active'), 10);
+            }
+        }
+
+        function closeProjectModal(projectId, event) {
+            const modal = document.getElementById(projectId + 'Modal');
+            if (modal) {
+                const iframes = modal.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    const src = iframe.src;
+                    iframe.src = '';
+                    iframe.src = src;
+                });
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeEmailPopup();
+                document.querySelectorAll('.project-modal-overlay').forEach(modal => {
+                    const iframes = modal.querySelectorAll('iframe');
+                    iframes.forEach(iframe => {
+                        const src = iframe.src;
+                        iframe.src = '';
+                        iframe.src = src;
+                    });
+                    modal.classList.remove('active');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = '';
+                    }, 300);
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
