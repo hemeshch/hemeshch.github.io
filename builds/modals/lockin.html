@@ -1,0 +1,106 @@
+<div class="project-modal-overlay" id="lockinModal" onclick="closeProjectModal('lockin', event)">
+    <div class="project-modal" onclick="event.stopPropagation()">
+        <button class="project-modal-close" onclick="closeProjectModal('lockin')">&times;</button>
+
+        <div class="project-modal-header">
+            <h1>LockIn</h1>
+            <p class="tagline">An AI Chrome extension that blocks distractions automatically. You're probably doom
+                scrolling right now. Not good.</p>
+
+            <div class="meta">
+                <span class="date">November 2024</span>
+                <div class="tags">
+                    <span class="tag">sentence transformers</span>
+                    <span class="tag">cosine similarity</span>
+                    <span class="tag">agentic filtering</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-modal-content">
+            <div class="video-container video-lazy" data-video-id="DA9QnT47xQ8" onclick="loadVideo(this)">
+                <img src="/build-img/lockin-1.webp" alt="LockIn Demo" class="video-thumb" loading="lazy">
+                <div class="video-play-btn">
+                    <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </div>
+            </div>
+
+            <div class="tldr">
+                <div class="tldr-title">TL;DR</div>
+                <p>Built the first dynamic distraction blocker that actually understands context. Just type your
+                    goal and set a time. AI automatically blocks anything unrelated to your task.</p>
+            </div>
+
+            <h2>the problem</h2>
+            <p>Distractions are everywhere. You sit down to learn systems design and somehow end up watching videos
+                about the Rizzler. Three hours gone.</p>
+
+            <p>Every current blocker uses hardcoded, static URL lists. You manually add sites to block, and the
+                moment you need to use YouTube for research, you're stuck choosing between blocking everything or
+                nothing.</p>
+
+            <p class="emphasis">We built the first dynamic system that actually understands context.</p>
+
+            <hr>
+
+            <h2>how it works</h2>
+            <p>Just type your goal and set a time. Browse normally. LockIn's AI automatically blocks anything
+                unrelated to your task without disrupting your workflow.</p>
+
+            <img src="/build-img/lockin-1.webp" alt="LockIn task setup" loading="lazy">
+            <p class="image-caption">Select a time and define your task. Built-in to-do list and calendar included.
+            </p>
+
+            <p>If your goal is "learn systems design," it will let you access YouTube videos, Google searches, and
+                anything related to that topic. But it will restrict access to unrelated content.</p>
+
+            <img src="/build-img/lockin-2.webp" alt="LockIn blocking distractions" loading="lazy">
+            <p class="image-caption">AI automatically blocks distractions unrelated to your goals. Blocked URLs are
+                saved for later.</p>
+
+            <p>The magic happens through our three-layer AI filtering system:</p>
+
+            <p><strong>Layer 1:</strong> The moment you start a task, a fine-tuned GPT-4o model generates a smart
+                safelist of approved websites directly related to your goal.</p>
+
+            <p><strong>Layer 2:</strong> For URLs not on the whitelist, we use sentence transformers
+                (all-MiniLM-L12-v2) to compare your goal with tab titles and URLs through cosine similarity.</p>
+
+            <p><strong>Layer 3:</strong> An AI agent makes the final decision on borderline cases, determining if
+                that tab is helping or hurting your focus.</p>
+
+            <hr>
+
+            <h2>the build</h2>
+            <p>The backend runs on Node.js and Express, managing the three-layer filtering smoothly. The Chrome
+                extension uses Manifest V3, which came with its own set of challenges.</p>
+
+            <p>Dealing with Manifest V3 restrictions was tough, particularly accessing tab data securely. We also
+                faced limitations with Chrome's local storage when implementing a timer that constantly updates
+                without performance issues.</p>
+
+            <p>Building the cosine similarity system was interesting. Using all-MiniLM-L12-v2 to generate vectors
+                and then building a cosine similarity function with proper threshold adjustments in 24 hours was a
+                challenge.</p>
+
+            <p class="emphasis">We achieved very high response times for blocking. It operates smoothly without any
+                delays or disruptions to a user's regular workflow.</p>
+
+            <img src="/build-img/lockin-3.webp" alt="LockIn productivity guardian" loading="lazy">
+            <p class="image-caption">LockIn becomes your personal productivity guardian.</p>
+
+            <hr>
+
+            <h2>LockIn</h2>
+            <p>Built with <a href="https://www.linkedin.com/in/rayaan-damani-1939a9217/" target="_blank">Rayaan
+                    Damani</a>, <a href="https://www.linkedin.com/in/sandeepramlochan/" target="_blank">Sandeep
+                    Chris Ramlochan</a>, and <a href="https://www.linkedin.com/in/prad-chebolu/"
+                    target="_blank">Pradyun Chebolu</a>.</p>
+
+            <div class="project-modal-links">
+                <a href="https://devpost.com/software/lockin-pb2mtl" target="_blank" class="primary">Devpost</a>
+                <a href="https://github.com/hemeshch/lockin" target="_blank" class="secondary">GitHub</a>
+            </div>
+        </div>
+    </div>
+</div>

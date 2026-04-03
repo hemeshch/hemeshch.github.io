@@ -1,0 +1,61 @@
+<div class="project-modal-overlay" id="hootplannerModal" onclick="closeProjectModal('hootplanner', event)">
+    <div class="project-modal" onclick="event.stopPropagation()">
+        <button class="project-modal-close" onclick="closeProjectModal('hootplanner')">&times;</button>
+
+        <div class="project-modal-header">
+            <h1>HootPlanner</h1>
+            <p class="tagline">The only Rice course schedule + extracurricular recommendation system.</p>
+
+            <div class="meta">
+                <span class="date">September 2024</span>
+                <div class="tags">
+                    <span class="tag">1st place hackrice</span>
+                    <span class="tag">rag pipeline</span>
+                    <span class="tag">lancedb</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-modal-content">
+            <div class="video-container video-lazy" data-video-id="ipzoyTPznfA" onclick="loadVideo(this)">
+                <img src="/build-img/hootplanner-1.webp" alt="HootPlanner Demo" class="video-thumb" loading="lazy">
+                <div class="video-play-btn">
+                    <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </div>
+            </div>
+
+            <div class="tldr">
+                <div class="tldr-title">TL;DR</div>
+                <p>Won First Place at HackRice 2024. Built a personalized course scheduling, research opportunity
+                    finder, and club recommendation system for Rice students using RAG and vector search.</p>
+            </div>
+
+            <h2>The Problem</h2>
+            <p>Course discovery and scheduling is overwhelming. Students miss research opportunities they never knew
+                existed. Too many choices in clubs and activities leads to decision paralysis.</p>
+
+            <h2>The Solution</h2>
+            <p>HootPlanner is the one-stop shop for students preparing for their careers in college. Craft perfect
+                class schedules in seconds. Discover research projects tailored to your passions. Find clubs and
+                activities you'll actually love.</p>
+
+            <img src="/build-img/hootplanner-1.webp" alt="HootPlanner Course Scheduler" loading="lazy">
+
+            <img src="/build-img/hootplanner-2.webp" alt="HootPlanner Research Opportunities" loading="lazy">
+
+            <img src="/build-img/hootplanner-3.webp" alt="HootPlanner Club Discovery" loading="lazy">
+
+            <h2>The Build</h2>
+            <p>Backend powered by FastAPI handling student onboarding, course recommendations, club suggestions, and
+                research opportunities. We integrated LanceDB for vector search, using pre-trained language models
+                to generate embeddings for semantic matching.</p>
+
+            <p>Frontend built with Next.js and Tailwind CSS. The RAG pipeline handles batch processing and cosine
+                similarity calculations to provide personalized recommendations based on students' interests and
+                academic profiles.</p>
+
+            <p style="font-size: 1.15rem; font-weight: 500; color: #222; background: linear-gradient(to bottom, transparent 60%, rgba(255, 230, 0, 0.3) 60%); display: inline;">
+                Goes beyond simple keyword matching to offer truly valuable recommendations.</p>
+        </div>
+    </div>
+</div>

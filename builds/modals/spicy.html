@@ -1,0 +1,54 @@
+<div class="project-modal-overlay" id="spicyModal" onclick="closeProjectModal('spicy', event)">
+    <div class="project-modal" onclick="event.stopPropagation()">
+        <button class="project-modal-close" onclick="closeProjectModal('spicy')">&times;</button>
+
+        <div class="project-modal-header">
+            <h1>Spicy</h1>
+            <p class="tagline">An AI copilot for LTSpice built for electrical engineers.</p>
+
+            <div class="meta">
+                <span class="date">2025</span>
+                <div class="tags">
+                    <span class="tag">AI copilot</span>
+                    <span class="tag">circuit simulation</span>
+                    <span class="tag">native macOS</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-modal-content">
+            <div class="video-container video-lazy" data-video-id="7_ovL6KgntE" onclick="loadVideo(this)">
+                <img src="/build-img/spicy-hero.webp" alt="Spicy Demo" class="video-thumb" loading="lazy">
+                <div class="video-play-btn">
+                    <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+                </div>
+            </div>
+
+            <div class="tldr">
+                <div class="tldr-title">TL;DR</div>
+                <p>Built an AI interface for the most used (and hated) circuit simulator on the planet. Describe any change, ask questions, or build entire circuits completely from text. Native macOS app with 10+ models.</p>
+            </div>
+
+            <h2>The Problem</h2>
+            <p>LTSpice is the industry standard for circuit simulation in electrical engineering. It's also the most unintuitive software I've ever touched. Straight out of 2001.</p>
+
+            <img src="/build-img/ltspice.webp" alt="LTSpice interface" loading="lazy">
+
+            <h2>The Solution</h2>
+            <p>Spicy sits on top of LTSpice. You describe what you want, Spicy writes the schematic, modifies the netlist, and reloads LTSpice automatically. No more dragging wires to the wrong node.</p>
+
+            <p><strong>"Build me a buck converter with a 12V input, NMOS switch..."</strong></p>
+            <p><strong>"Add a 100nF decoupling cap between VCC and ground."</strong></p>
+            <p><strong>"Swap the BJT for a MOSFET."</strong></p>
+
+            <img src="/build-img/spicy-1.webp" alt="Spicy interface" loading="lazy">
+
+            <h2>Under The Hood</h2>
+            <p>Spicy understands SPICE at a really high level. Wire syntax, flag syntax, symbol placement with full rotation matrices, pin offset calculations per component type.</p>
+
+            <p>Had to reverse-engineer the format myself because there's no official spec.</p>
+
+            <p style="font-size: 1.15rem; font-weight: 500; color: #222; background: linear-gradient(to bottom, transparent 60%, rgba(255, 230, 0, 0.3) 60%); display: inline;">Built as a native macOS app. UI inspired by vintage Apple. 10+ models available including Claude, GPT-5, Gemini, Kimi, MiniMax, and GLM.</p>
+        </div>
+    </div>
+</div>

@@ -81,7 +81,7 @@
             font-family: 'Figtree', sans-serif;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 20px 0;
             line-height: 1.6;
             color: #333;
         }
@@ -140,8 +140,8 @@
         h2 {
             font-size: 1.8rem;
             font-weight: normal;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            margin-top: 48px;
+            margin-bottom: 16px;
             scroll-margin-top: 40px;
         }
 
@@ -152,7 +152,7 @@
         }
 
         ul {
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             padding-left: 20px;
         }
 
@@ -332,26 +332,89 @@
             transform: scaleX(1);
         }
 
-        .combined-section {
+        .contact-section {
+            margin-bottom: 0;
+            margin-top: 48px;
+            padding-top: 36px;
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+        }
+
+        .contact-section h2 {
+            margin-top: 0;
+            margin-bottom: 6px;
+        }
+
+        .contact-section p {
+            margin-bottom: 14px;
+        }
+
+        .mind-tags {
+            overflow: hidden;
+            position: relative;
+            margin-top: -4px;
+            margin-bottom: 28px;
+        }
+
+        .mind-tags::before,
+        .mind-tags::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .mind-tags::before {
+            left: 0;
+            background: linear-gradient(to right, #fff, transparent);
+        }
+
+        .mind-tags::after {
+            right: 0;
+            background: linear-gradient(to left, #fff, transparent);
+        }
+
+        .mind-tags-track {
             display: flex;
-            gap: 40px;
-            margin-bottom: 10px;
-            align-items: flex-start;
+            gap: 12px;
+            width: max-content;
+            animation: scrollTags 75s linear infinite;
         }
 
-        .combined-section>div {
-            flex: 1;
+        .mind-tags-track:hover {
+            animation-play-state: paused;
         }
 
-        .combined-section h2 {
-            margin-top: 15px;
-        }
-
-        @media (max-width: 600px) {
-            .combined-section {
-                flex-direction: column;
-                gap: 10px;
+        @keyframes scrollTags {
+            0% {
+                transform: translateX(0);
             }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .mind-tag {
+            flex-shrink: 0;
+            background: #f3f3f3;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #555;
+            white-space: nowrap;
         }
 
         .hero-links {
@@ -663,28 +726,9 @@
             letter-spacing: 0.5px;
         }
 
-        .show-more-btn::after {
-            content: '>';
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
         .show-more-btn:hover {
-            border-style: solid;
+            border-color: #999;
             color: #333;
-            letter-spacing: 1px;
-        }
-
-        .show-more-btn:hover::after {
-            transform: translateX(3px);
-        }
-
-        .show-more-btn.expanded::after {
-            content: '<';
-        }
-
-        .show-more-btn.expanded:hover::after {
-            transform: translateX(-3px);
         }
 
         /* Email Popup */
@@ -763,6 +807,36 @@
             margin-left: 12px;
         }
 
+        .popup-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .popup-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: all 0.2s ease;
+        }
+
+        .email-popup .popup-social-link {
+            flex: 1;
+        }
+
+        .popup-social-link:hover {
+            color: #333;
+            border-color: #ccc;
+            background: #f6f6f6;
+        }
+
         /* Project Modal */
         .project-modal-overlay {
             position: fixed;
@@ -770,21 +844,36 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            display: none;
+            display: flex;
             justify-content: center;
             align-items: flex-start;
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
             overflow-y: auto;
+            overscroll-behavior: contain;
             padding: 40px 20px;
+            pointer-events: none;
+        }
+
+        .project-modal-overlay::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: -1;
         }
 
         .project-modal-overlay.active {
-            display: flex;
             opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
         }
 
         .project-modal {
@@ -796,7 +885,8 @@
             transform: scale(0.95) translateY(20px);
             transition: all 0.3s ease;
             position: relative;
-            margin: auto;
+            margin: 0 auto;
+            flex-shrink: 0;
         }
 
         .project-modal-overlay.active .project-modal {
@@ -892,7 +982,7 @@
             margin-bottom: 16px;
         }
 
-        .project-modal-content img {
+        .project-modal-content img:not(.video-thumb) {
             max-width: min(100%, 700px);
             height: auto;
             border-radius: 8px;
@@ -907,6 +997,33 @@
             color: #888;
             margin-top: -16px;
             margin-bottom: 24px;
+        }
+
+        .project-modal-content .video-lazy {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-modal-content .video-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .project-modal-content .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.85;
+            transition: opacity 0.2s ease;
+        }
+
+        .project-modal-content .video-lazy:hover .video-play-btn {
+            opacity: 1;
         }
 
         .project-modal-content .video-container {
@@ -1024,7 +1141,7 @@
             margin-left: calc(-50vw + 50%);
             overflow: hidden;
             position: relative;
-            padding: 30px 0 0 0;
+            padding: 30px 0;
         }
 
         .inspiration-gallery::before,
@@ -1147,7 +1264,7 @@
             }
 
             .inspiration-gallery {
-                padding: 20px 0 0 0;
+                padding: 20px 0;
             }
         }
     </style>
@@ -1215,7 +1332,7 @@
 
         <div class="hero-section">
             <h1>hey, i'm hemesh!</h1>
-            <p>builder. engineer. filmmaker. computer engineering @ rice university.</p>
+            <p>i build ai systems, make films, and engineer hardware @ rice university.</p>
 
             <div class="hero-links">
                 <a href="#builds" class="hero-link primary">see builds</a>
@@ -1226,7 +1343,59 @@
 
         <h2 id="builds">builds</h2>
 
+        <div class="mind-tags">
+            <div class="mind-tags-track">
+                <span class="mind-tag">RAG pipelines</span>
+                <span class="mind-tag">vector embeddings</span>
+                <span class="mind-tag">semantic memory graphs</span>
+                <span class="mind-tag">agentic workflows</span>
+                <span class="mind-tag">real-time inference</span>
+                <span class="mind-tag">on-device AI</span>
+                <span class="mind-tag">multi-agent orchestration</span>
+                <span class="mind-tag">frontier ai</span>
+                <span class="mind-tag">constraint optimization</span>
+                <span class="mind-tag">ETL pipelines</span>
+                <span class="mind-tag">latent space search</span>
+                <span class="mind-tag">tool-use systems</span>
+                <span class="mind-tag">biryani</span>
+                <span class="mind-tag">hard sci-fi books</span>
+                <span class="mind-tag">aperture</span>
+                <span class="mind-tag">SIGMA 18-50/2,8</span>
+                <span class="mind-tag">RAG pipelines</span>
+                <span class="mind-tag">vector embeddings</span>
+                <span class="mind-tag">semantic memory graphs</span>
+                <span class="mind-tag">agentic workflows</span>
+                <span class="mind-tag">real-time inference</span>
+                <span class="mind-tag">on-device AI</span>
+                <span class="mind-tag">multi-agent orchestration</span>
+                <span class="mind-tag">frontier ai</span>
+                <span class="mind-tag">constraint optimization</span>
+                <span class="mind-tag">ETL pipelines</span>
+                <span class="mind-tag">latent space search</span>
+                <span class="mind-tag">tool-use systems</span>
+                <span class="mind-tag">biryani</span>
+                <span class="mind-tag">hard sci-fi books</span>
+                <span class="mind-tag">aperture</span>
+                <span class="mind-tag">SIGMA 18-50/2,8</span>
+            </div>
+        </div>
+
         <div class="projects-grid">
+
+            <a href="/builds/agent-evan" class="project-card">
+                <img src="/build-img/agent-evan-cover.webp" alt="agent evan" class="project-image" loading="lazy">
+                <div class="project-content">
+                    <h3 class="project-title">agent evan</h3>
+                    <p class="project-subtitle">agi? the ultimate desktop agent that takes action - do anything,
+                        from anywhere.</p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">agentic orchestration</span>
+                        </div>
+                        <span class="project-date">sept. 2025</span>
+                    </div>
+                </div>
+            </a>
 
             <a href="/builds/summer-ai" class="project-card">
                 <img src="/build-img/summer-cover.webp" alt="Summer AI" class="project-image" loading="lazy">
@@ -1259,21 +1428,6 @@
                 </div>
             </a>
 
-            <a href="/builds/agent-evan" class="project-card">
-                <img src="/build-img/agent-evan-cover.webp" alt="agent evan" class="project-image" loading="lazy">
-                <div class="project-content">
-                    <h3 class="project-title">agent evan</h3>
-                    <p class="project-subtitle">agi? the ultimate desktop agent that takes action - do anything,
-                        from anywhere.</p>
-                    <div class="project-meta">
-                        <div class="project-categories">
-                            <span class="project-category">agentic orchestration</span>
-                        </div>
-                        <span class="project-date">sept. 2025</span>
-                    </div>
-                </div>
-            </a>
-
 
             <a href="#" onclick="openProjectModal('hootplanner'); return false;" class="project-card">
                 <img src="/build-img/hootplanner-1.webp" alt="HootPlanner" class="project-image" loading="lazy">
@@ -1287,6 +1441,22 @@
                             <span class="project-category">lancedb</span>
                         </div>
                         <span class="project-date">sept. 2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" onclick="openProjectModal('spicy'); return false;" class="project-card">
+                <img src="/build-img/spicy-1.webp" alt="Spicy" class="project-image" loading="lazy">
+                <div class="project-content">
+                    <h3 class="project-title">spicy</h3>
+                    <p class="project-subtitle">an ai agent for ltspice circuit simulations. build
+                        entire circuits from text.</p>
+                    <div class="project-meta">
+                        <div class="project-categories">
+                            <span class="project-category">AI copilot</span>
+                            <span class="project-category">circuit simulation</span>
+                        </div>
+                        <span class="project-date">2025</span>
                     </div>
                 </div>
             </a>
@@ -1308,7 +1478,7 @@
                 </div>
             </a>
 
-            <a href="#" onclick="openProjectModal('lockin'); return false;" class="project-card">
+            <a href="#" onclick="openProjectModal('lockin'); return false;" class="project-card hidden-project">
                 <img src="/build-img/lockin-2.webp" alt="LockIn" class="project-image" loading="lazy">
                 <div class="project-content">
                     <h3 class="project-title">lockin</h3>
@@ -1322,63 +1492,61 @@
                     </div>
                 </div>
             </a>
-            <!-- 
-            <a href="#" class="project-card hidden-project">
-                <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/764/784/datas/medium.webp"
-                    alt="Agent Evan" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">riceapps</h3>
-                    <p class="project-subtitle">a collection of apps for rice students</p>
-                    <div class="project-meta">
-                        <div class="project-categories">
-                            <span class="project-category">AI</span>
-                            <span class="project-category">Desktop</span>
-                        </div>
-                        <span class="project-date">2024</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="project-card hidden-project">
-                <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/764/784/datas/medium.webp"
-                    alt="Agent Evan" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">craftroom</h3>
-                    <p class="project-subtitle">universis is a platform for students to find and apply to internships
-                    </p>
-                    <div class="project-meta">
-                        <div class="project-categories">
-                            <span class="project-category">AI</span>
-                            <span class="project-category">Desktop</span>
-                        </div>
-                        <span class="project-date">2024</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="project-card hidden-project">
-                <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/764/784/datas/medium.webp"
-                    alt="Agent Evan" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">sessionfix</h3>
-                    <p class="project-subtitle">universis is a platform for students to find and apply to internships
-                    </p>
-                    <div class="project-meta">
-                        <div class="project-categories">
-                            <span class="project-category">AI</span>
-                            <span class="project-category">Desktop</span>
-                        </div>
-                        <span class="project-date">2024</span>
-                    </div>
-                </div>
-            </a> -->
 
         </div>
 
-        <!-- <button class="show-more-btn" id="showMoreBtn" onclick="toggleProjects()">psst... more stuff </button> -->
+        <button class="show-more-btn" id="showMoreBtn" onclick="toggleProjects()">+ more builds </button>
 
+        <div class="contact-section">
+            <h2>Contact</h2>
+            <p>always down to chat.</p>
+            <div class="popup-socials">
+                <a href="#" onclick="openEmailPopup(); return false;" class="popup-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="16" x="2" y="4" rx="2" />
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                    Email
+                </a>
+                <a href="https://www.linkedin.com/in/hemeshch/" target="_blank" class="popup-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/hemeshch" target="_blank" class="popup-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
 
-        <h2>In The Past:</h2>
+        <h2>Featured in</h2>
+        <ul>
+            <li><a href="https://x.com/narendramodi/status/1353690264343220224" class="featured-link"
+                    target="_blank">The Prime Minister of India tweeted about me and my work</a></li>
+            <li><a href="https://www.theguardian.com/global-development/2024/jan/16/hemesh-chadalavada-indian-inventor-alpha-monitor-alzheimers-dementia-care"
+                    class="featured-link" target="_blank">The Guardian (Indian teen invents gadget that may transform
+                    dementia care)</a></li>
+            <li><a href="https://www.newindianexpress.com/cities/hyderabad/2022/Jun/28/the-sky-is-his-limit-for-this-younginnovator-and-entrepreneur-2470377.html"
+                    class="featured-link" target="_blank">The New Indian Express (The sky is his limit for this young
+                    innovator and entrepreneur)</a></li>
+            <li><a href="https://timesofindia.indiatimes.com/india/he-has-crafted-a-device-to-help-dementia-patients-hemesh-chadalavada-has-already-created-multiple-devices-and-is-interested-in-electronics-and-robotics/articleshow/103497913.cms?from=mdr"
+                    class="featured-link" target="_blank">The Times of India (He has crafted a device to help Dementia
+                    patients)</a></li>
+            <li><a href="https://thebetterindia.com/337126/monitors-for-elderly-hemesh-chadalavada-invents-device-for-dementia/"
+                    class="featured-link" target="_blank">The Better India (Grandma's Struggles Makes Teenager Craft a
+                    Device To Aid Dementia Patients)</a></li>
+        </ul>
+
+        <h2>In The Past</h2>
         <ul>
             <li>Spent 6 years building a wearable device for my grandma with Alzheimer's.
                 <ul class="sublist">
@@ -1426,7 +1594,7 @@
             </li>
         </ul>
 
-        <h2>"Achievements" that my Indian mom is proud of:</h2>
+        <h2>"Achievements" that my Indian mom is proud of</h2>
         <ul>
             <li>Received the Prime Minister's Bal Puraskar, the highest civilian award for students in India.</li>
             <li>Won the Samsung Solve for Tomorrow Contest out of 18,000 college students.
@@ -1442,47 +1610,6 @@
         </ul>
 
 
-        <div class="combined-section">
-            <div>
-                <h2>Let's hang out:</h2>
-                <p>Reach out on my socials, or shoot me an email at <a href="#"
-                        onclick="openEmailPopup(); return false;">hemesh@rice.edu</a>.
-                </p>
-            </div>
-
-            <div>
-                <h2>Things in my mind:</h2>
-                <div class="tag-container">
-                    <span class="tag">attention and memory</span>
-                    <span class="tag">fourier transforms</span>
-                    <span class="tag">arduinos</span>
-                    <span class="tag">biryani</span>
-                    <span class="tag">films</span>
-                    <span class="tag">hard sci-fi books</span>
-                    <span class="tag">aperture</span>
-                    <span class="tag">SIGMA 18-50/2,8</span>
-                </div>
-            </div>
-        </div>
-
-        <h2>Featured in:</h2>
-        <ul>
-            <li><a href="https://www.theguardian.com/global-development/2024/jan/16/hemesh-chadalavada-indian-inventor-alpha-monitor-alzheimers-dementia-care"
-                    class="featured-link" target="_blank">The Guardian (Indian teen invents gadget that may transform
-                    dementia care)</a></li>
-            <li><a href="https://www.newindianexpress.com/cities/hyderabad/2022/Jun/28/the-sky-is-his-limit-for-this-younginnovator-and-entrepreneur-2470377.html"
-                    class="featured-link" target="_blank">The New Indian Express (The sky is his limit for this young
-                    innovator and entrepreneur)</a></li>
-            <li><a href="https://timesofindia.indiatimes.com/india/he-has-crafted-a-device-to-help-dementia-patients-hemesh-chadalavada-has-already-created-multiple-devices-and-is-interested-in-electronics-and-robotics/articleshow/103497913.cms?from=mdr"
-                    class="featured-link" target="_blank">The Times of India (He has crafted a device to help Dementia
-                    patients)</a></li>
-            <li><a href="https://thebetterindia.com/337126/monitors-for-elderly-hemesh-chadalavada-invents-device-for-dementia/"
-                    class="featured-link" target="_blank">The Better India (Grandma's Struggles Makes Teenager Craft a
-                    Device To Aid Dementia Patients)</a></li>
-            <li><a href="https://x.com/narendramodi/status/1353690264343220224" class="featured-link"
-                    target="_blank">The GOATED Prime Minister Tweet</a></li>
-        </ul>
-
     </main>
 
     <!-- Email Popup -->
@@ -1494,252 +1621,29 @@
                 <span>hemesh@rice.edu</span>
                 <span class="copy-hint" id="copyHint">copy</span>
             </div>
-        </div>
-    </div>
-
-    <!-- Project Modal: LockIn Browser -->
-    <div class="project-modal-overlay" id="lockinModal" onclick="closeProjectModal('lockin', event)">
-        <div class="project-modal" onclick="event.stopPropagation()">
-            <button class="project-modal-close" onclick="closeProjectModal('lockin')">&times;</button>
-
-            <div class="project-modal-header">
-                <h1>LockIn</h1>
-                <p class="tagline">An AI Chrome extension that blocks distractions automatically. You're probably doom
-                    scrolling right now. Not good.</p>
-
-                <div class="meta">
-                    <span class="date">November 2024</span>
-                    <div class="tags">
-                        <span class="tag">sentence transformers</span>
-                        <span class="tag">cosine similarity</span>
-                        <span class="tag">agentic filtering</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-modal-content">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/DA9QnT47xQ8" title="LockIn Demo"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <div class="tldr">
-                    <div class="tldr-title">TL;DR</div>
-                    <p>Built the first dynamic distraction blocker that actually understands context. Just type your
-                        goal and set a time. AI automatically blocks anything unrelated to your task.</p>
-                </div>
-
-                <h2>the problem</h2>
-                <p>Distractions are everywhere. You sit down to learn systems design and somehow end up watching videos
-                    about the Rizzler. Three hours gone.</p>
-
-                <p>Every current blocker uses hardcoded, static URL lists. You manually add sites to block, and the
-                    moment you need to use YouTube for research, you're stuck choosing between blocking everything or
-                    nothing.</p>
-
-                <p class="emphasis">We built the first dynamic system that actually understands context.</p>
-
-                <hr>
-
-                <h2>how it works</h2>
-                <p>Just type your goal and set a time. Browse normally. LockIn's AI automatically blocks anything
-                    unrelated to your task without disrupting your workflow.</p>
-
-                <img src="/build-img/lockin-1.webp" alt="LockIn task setup" loading="lazy">
-                <p class="image-caption">Select a time and define your task. Built-in to-do list and calendar included.
-                </p>
-
-                <p>If your goal is "learn systems design," it will let you access YouTube videos, Google searches, and
-                    anything related to that topic. But it will restrict access to unrelated content.</p>
-
-                <img src="/build-img/lockin-2.webp" alt="LockIn blocking distractions" loading="lazy">
-                <p class="image-caption">AI automatically blocks distractions unrelated to your goals. Blocked URLs are
-                    saved for later.</p>
-
-                <p>The magic happens through our three-layer AI filtering system:</p>
-
-                <p><strong>Layer 1:</strong> The moment you start a task, a fine-tuned GPT-4o model generates a smart
-                    safelist of approved websites directly related to your goal.</p>
-
-                <p><strong>Layer 2:</strong> For URLs not on the whitelist, we use sentence transformers
-                    (all-MiniLM-L12-v2) to compare your goal with tab titles and URLs through cosine similarity.</p>
-
-                <p><strong>Layer 3:</strong> An AI agent makes the final decision on borderline cases, determining if
-                    that tab is helping or hurting your focus.</p>
-
-                <hr>
-
-                <h2>the build</h2>
-                <p>The backend runs on Node.js and Express, managing the three-layer filtering smoothly. The Chrome
-                    extension uses Manifest V3, which came with its own set of challenges.</p>
-
-                <p>Dealing with Manifest V3 restrictions was tough, particularly accessing tab data securely. We also
-                    faced limitations with Chrome's local storage when implementing a timer that constantly updates
-                    without performance issues.</p>
-
-                <p>Building the cosine similarity system was interesting. Using all-MiniLM-L12-v2 to generate vectors
-                    and then building a cosine similarity function with proper threshold adjustments in 24 hours was a
-                    challenge.</p>
-
-                <p class="emphasis">We achieved very high response times for blocking. It operates smoothly without any
-                    delays or disruptions to a user's regular workflow.</p>
-
-                <img src="/build-img/lockin-3.webp" alt="LockIn productivity guardian" loading="lazy">
-                <p class="image-caption">LockIn becomes your personal productivity guardian.</p>
-
-                <hr>
-
-                <h2>LockIn</h2>
-                <p>Built with <a href="https://www.linkedin.com/in/rayaan-damani-1939a9217/" target="_blank">Rayaan
-                        Damani</a>, <a href="https://www.linkedin.com/in/sandeepramlochan/" target="_blank">Sandeep
-                        Chris Ramlochan</a>, and <a href="https://www.linkedin.com/in/prad-chebolu/"
-                        target="_blank">Pradyun Chebolu</a>.</p>
-
-                <div class="project-modal-links">
-                    <a href="https://devpost.com/software/lockin-pb2mtl" target="_blank" class="primary">Devpost</a>
-                    <a href="https://github.com/hemeshch/lockin" target="_blank" class="secondary">GitHub</a>
-                </div>
+            <div class="popup-socials">
+                <a href="https://www.linkedin.com/in/hemeshch/" target="_blank" class="popup-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/hemeshch" target="_blank" class="popup-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- Project Modal: Universis -->
-    <div class="project-modal-overlay" id="universisModal" onclick="closeProjectModal('universis', event)">
-        <div class="project-modal" onclick="event.stopPropagation()">
-            <button class="project-modal-close" onclick="closeProjectModal('universis')">&times;</button>
-
-            <div class="project-modal-header">
-                <h1>Universis</h1>
-                <p class="tagline">AI medical coding that outperformed human experts with 98.2% accuracy.</p>
-
-                <div class="meta">
-                    <span class="date">2024</span>
-                    <div class="tags">
-                        <span class="tag">rag pipeline</span>
-                        <span class="tag">semantic search</span>
-                        <span class="tag">medical nlp</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-modal-content">
-                <img src="/build-img/universis.webp" alt="Universis Dashboard" loading="lazy">
-
-                <div class="tldr">
-                    <div class="tldr-title">TL;DR</div>
-                    <p>Built an AI medical coding system that achieved 98.2% accuracy in orthopedics, outperforming
-                        human experts. 69,000+ ICD-10-CM codes. 80,000+ CPT codes. All indexed and searchable. Received
-                        acquisition offers from top RCM companies and interviewed with Y Combinator W25.</p>
-                </div>
-
-                <h2>the problem</h2>
-                <p>Healthcare providers waste $19.7 billion per year due to incorrect medical claims, denials, and
-                    delays. Medical coders spend hours manually converting patient charts into ICD-10, CPT, and HCPCS
-                    codes. The cognitive load leads to errors that cost hospitals serious money.</p>
-
-                <p>Other companies have tried AI-powered coding assistance. They haven't been adopted because their
-                    accuracy sucks. Fine-tuned LLMs hallucinate codes that don't exist. Healthcare providers can't
-                    afford that risk.</p>
-
-                <img src="/build-img/universis-human.webp" alt="Universis vs Human Coders" loading="lazy">
-
-                <h2>the solution</h2>
-                <p>Universis converts patient charts into billing codes with higher accuracy than human professionals.
-                    Upload electronic health records, get the correct diagnosis and procedure codes back.</p>
-
-                <p>We built our own RAG pipeline and semantic search engine. No LLM hallucinations. The system achieved
-                    98.2% accuracy and reduced manual coding time by 85% across pilot deployments.</p>
-
-                <p class="emphasis">69,000+ ICD-10-CM codes. 80,000+ CPT codes. All indexed and searchable.</p>
-
-                <img src="/build-img/universis-dashboard.webp" alt="Universis Dashboard" loading="lazy">
-
-                <h2>the traction</h2>
-                <p>Worked with 40+ revenue cycle managers. Received acquisition offers from top RCM
-                    companies. Interviewed with Y Combinator W25.</p>
-
-                <p>Built with <a href="https://www.linkedin.com/in/siddharth-pilli-2b96a2179/" target="_blank">Siddharth
-                        Pilli</a>.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Project Modal: HootPlanner -->
-    <div class="project-modal-overlay" id="hootplannerModal" onclick="closeProjectModal('hootplanner', event)">
-        <div class="project-modal" onclick="event.stopPropagation()">
-            <button class="project-modal-close" onclick="closeProjectModal('hootplanner')">&times;</button>
-
-            <div class="project-modal-header">
-                <h1>HootPlanner</h1>
-                <p class="tagline">The only Rice course schedule + extracurricular recommendation system.</p>
-
-                <div class="meta">
-                    <span class="date">September 2024</span>
-                    <div class="tags">
-                        <span class="tag">1st place hackrice</span>
-                        <span class="tag">rag pipeline</span>
-                        <span class="tag">lancedb</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-modal-content">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/ipzoyTPznfA" title="HootPlanner Demo"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <div class="tldr">
-                    <div class="tldr-title">TL;DR</div>
-                    <p>Won First Place at HackRice 2024. Built a personalized course scheduling, research opportunity
-                        finder, and club recommendation system for Rice students using RAG and vector search.</p>
-                </div>
-
-                <h2>the problem</h2>
-                <p>Course discovery and scheduling is overwhelming. Students miss research opportunities they never knew
-                    existed. Too many choices in clubs and activities leads to decision paralysis.</p>
-
-                <h2>the solution</h2>
-                <p>HootPlanner is the one-stop shop for students preparing for their careers in college. Craft perfect
-                    class schedules in seconds. Discover research projects tailored to your passions. Find clubs and
-                    activities you'll actually love.</p>
-
-                <img src="/build-img/hootplanner-1.webp" alt="HootPlanner Course Scheduler" loading="lazy">
-                <p class="image-caption">Course Scheduler: Find the best courses for you.</p>
-
-                <img src="/build-img/hootplanner-2.webp" alt="HootPlanner Research Opportunities" loading="lazy">
-                <p class="image-caption">Research Opportunities Finder: Discover research you're truly passionate about.
-                </p>
-
-                <img src="/build-img/hootplanner-3.webp" alt="HootPlanner Club Discovery" loading="lazy">
-                <p class="image-caption">Club Discovery: Find clubs that suit you.</p>
-
-                <h2>the build</h2>
-                <p>Backend powered by FastAPI handling student onboarding, course recommendations, club suggestions, and
-                    research opportunities. We integrated LanceDB for vector search, using pre-trained language models
-                    to generate embeddings for semantic matching.</p>
-
-                <p>Frontend built with Next.js and Tailwind CSS. The RAG pipeline handles batch processing and cosine
-                    similarity calculations to provide personalized recommendations based on students' interests and
-                    academic profiles.</p>
-
-                <p class="emphasis">Goes beyond simple keyword matching to offer truly valuable recommendations.</p>
-
-                <h2>HootPlanner</h2>
-                <p>Built with <a href="https://www.linkedin.com/in/eavntu/" target="_blank">Evan Tu</a> and <a
-                        href="https://www.linkedin.com/in/jkl565/" target="_blank">Justin Lee</a>.</p>
-
-                <div class="project-modal-links">
-                    <a href="https://devpost.com/software/hoot-planner" target="_blank" class="primary">Devpost</a>
-                    <a href="https://github.com/evanjt06/hootplanner" target="_blank" class="secondary">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Modal container for dynamically loaded modals -->
+    <div id="modal-container"></div>
 
     <script>
         function openEmailPopup() {
@@ -1771,20 +1675,34 @@
             }
         });
 
-        // Project Modal Functions
-        function openProjectModal(projectId) {
-            const modal = document.getElementById(projectId + 'Modal');
+        function loadVideo(el) {
+            const id = el.dataset.videoId;
+            el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>';
+            el.classList.remove('video-lazy');
+            el.style.cursor = 'default';
+            el.onclick = null;
+        }
+
+        // Project Modal Functions — modals are fetched from /builds/modals/{id}.html
+        async function openProjectModal(projectId) {
+            let modal = document.getElementById(projectId + 'Modal');
+            if (!modal) {
+                const res = await fetch('/builds/modals/' + projectId + '.html');
+                if (!res.ok) return;
+                const html = await res.text();
+                document.getElementById('modal-container').insertAdjacentHTML('beforeend', html);
+                modal = document.getElementById(projectId + 'Modal');
+                modal.offsetHeight; // force repaint before animating
+            }
             if (modal) {
                 document.body.style.overflow = 'hidden';
-                modal.style.display = 'flex';
-                setTimeout(() => modal.classList.add('active'), 10);
+                modal.classList.add('active');
             }
         }
 
         function closeProjectModal(projectId, event) {
             const modal = document.getElementById(projectId + 'Modal');
             if (modal) {
-                // Stop any playing videos
                 const iframes = modal.querySelectorAll('iframe');
                 iframes.forEach(iframe => {
                     const src = iframe.src;
@@ -1792,16 +1710,12 @@
                     iframe.src = src;
                 });
                 modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = '';
-                }, 300);
+                document.body.style.overflow = '';
             }
         }
 
         function closeAllProjectModals() {
             document.querySelectorAll('.project-modal-overlay').forEach(modal => {
-                // Stop any playing videos
                 const iframes = modal.querySelectorAll('iframe');
                 iframes.forEach(iframe => {
                     const src = iframe.src;
@@ -1809,11 +1723,8 @@
                     iframe.src = src;
                 });
                 modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = '';
-                }, 300);
             });
+            document.body.style.overflow = '';
         }
 
         function toggleProjects() {
@@ -1826,8 +1737,9 @@
             });
 
             btn.classList.toggle('expanded');
-            btn.childNodes[0].textContent = isShowing ? 'psst... more stuff ' : 'okay, hide them ';
+            btn.childNodes[0].textContent = isShowing ? '+ more builds ' : 'shh... hide them ';
         }
+
     </script>
 
     <div class="inspiration-gallery">
