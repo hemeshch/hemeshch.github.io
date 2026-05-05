@@ -16,6 +16,13 @@
 </url>
 
 <url>
+  <loc>https://hemesh.tech/builds/hardgpt.html</loc>
+  <lastmod>2026-05-04</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.90</priority>
+</url>
+
+<url>
   <loc>https://hemesh.tech/builds/agent-evan.html</loc>
   <lastmod>2025-01-01</lastmod>
   <changefreq>monthly</changefreq>
