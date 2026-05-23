@@ -38,33 +38,21 @@
 
 
     <style>
-        #page-loader {
-            position: fixed;
-            inset: 0;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 99999;
-            transition: opacity 0.35s ease;
+        .img-skeleton {
+            background: linear-gradient(90deg, #ececec 0%, #f6f6f6 50%, #ececec 100%);
+            background-size: 200% 100%;
+            animation: skeleton-shimmer 1.4s ease-in-out infinite;
         }
 
-        #page-loader.hide {
-            opacity: 0;
-            pointer-events: none;
+        .img-skeleton.loaded {
+            animation: none;
+            background: none;
+            transition: none;
         }
 
-        #page-loader .loader-spinner {
-            width: 28px;
-            height: 28px;
-            border: 2px solid #eee;
-            border-top-color: #222;
-            border-radius: 50%;
-            animation: page-loader-spin 0.8s linear infinite;
-        }
-
-        @keyframes page-loader-spin {
-            to { transform: rotate(360deg); }
+        @keyframes skeleton-shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
     </style>
 
@@ -1302,10 +1290,6 @@
 </head>
 
 <body>
-    <div id="page-loader" aria-hidden="true">
-        <div class="loader-spinner"></div>
-    </div>
-
     <header>
         <h3 class="site-title">Hemesh <span class="last-name">Chadalavada</span></h3>
         <nav class="nav-links">
@@ -1696,30 +1680,15 @@
     <div id="modal-container"></div>
 
     <script>
-        (function hidePageLoader() {
-            const loader = document.getElementById('page-loader');
-            if (!loader) return;
-
-            const heroImages = Array.from(document.querySelectorAll('.photo-scroll-track .scroll-photo')).slice(0, 12);
-            const imagePromises = heroImages.map(img => {
-                if (img.complete && img.naturalWidth > 0) return Promise.resolve();
-                return new Promise(resolve => {
-                    img.addEventListener('load', resolve, { once: true });
-                    img.addEventListener('error', resolve, { once: true });
-                });
+        (function tagImageSkeletons() {
+            const imgs = document.querySelectorAll('.scroll-photo, .polaroid img');
+            imgs.forEach(img => {
+                if (img.complete && img.naturalWidth > 0) return;
+                img.classList.add('img-skeleton');
+                const done = () => img.classList.add('loaded');
+                img.addEventListener('load', done, { once: true });
+                img.addEventListener('error', done, { once: true });
             });
-            const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
-
-            let hidden = false;
-            const hide = () => {
-                if (hidden) return;
-                hidden = true;
-                loader.classList.add('hide');
-                setTimeout(() => loader.remove(), 400);
-            };
-
-            Promise.all([fontsReady, ...imagePromises]).then(hide);
-            setTimeout(hide, 5000); // safety fallback
         })();
 
         function openEmailPopup() {
