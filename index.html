@@ -13,7 +13,7 @@
     <meta name="description"
         content="Hemesh Chadalavada is a builder, engineer, and filmmaker studying Computer Engineering at Rice University. Creator of Alpha Monitor, Agent Evan, and Summer AI. Prime Minister's Bal Puraskar recipient. Samsung Solve for Tomorrow winner.">
     <meta name="keywords"
-        content="Hemesh Chadalavada, Rice University, AI engineer, agentic systems, Alpha Monitor, Agent Evan, Summer AI, HackRice, Prime Minister Bal Puraskar, Samsung Solve for Tomorrow">
+        content="Hemesh Chadalavada, Rice University, AI engineer, agentic systems, Etched, Amazon Web Services, AWS, Alpha Monitor, Agent Evan, Summer AI, HackRice, Prime Minister Bal Puraskar, Samsung Solve for Tomorrow">
     <meta name="author" content="Hemesh Chadalavada">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hemesh.tech/">
@@ -493,6 +493,73 @@
             width: 100%;
             height: 1px;
             background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+        }
+
+        /* Experience Section */
+        .experience-list {
+            margin-top: 4px;
+        }
+
+        .experience-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-logo {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .experience-text {
+            flex: 1;
+            min-width: 0;
+            line-height: 1.4;
+        }
+
+        .experience-role {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .experience-role a {
+            color: #222;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #ddd;
+            text-underline-offset: 3px;
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .experience-role a:hover {
+            text-decoration-color: #222;
+        }
+
+        .experience-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .experience-meta {
+            color: #999;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 600px) {
+            .experience-meta {
+                display: none;
+            }
         }
 
         .polaroid-gallery {
@@ -1368,6 +1435,28 @@
             </div>
         </div>
 
+
+        <h2 id="experience">experience</h2>
+
+        <div class="experience-list">
+            <div class="experience-item" title="san jose, ca">
+                <img src="logos/etched.webp" alt="etched logo" class="experience-logo">
+                <div class="experience-text">
+                    <span class="experience-role">member of technical staff @ <a href="https://etched.com"
+                            target="_blank">etched</a></span>
+                    <span class="experience-desc">· building frontier ai inference clusters</span>
+                </div>
+            </div>
+            <div class="experience-item" title="austin, tx">
+                <img src="logos/aws.webp" alt="aws logo" class="experience-logo">
+                <div class="experience-text">
+                    <span class="experience-role">software engineer @ <a href="https://aws.amazon.com"
+                            target="_blank">aws</a></span>
+                    <span class="experience-desc">· built ai infra (bedrock) for structured outputs and agents</span>
+                </div>
+                <span class="experience-meta">jun – aug 2026</span>
+            </div>
+        </div>
 
         <h2 id="builds">builds</h2>
 
